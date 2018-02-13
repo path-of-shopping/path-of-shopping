@@ -1,0 +1,3 @@
+[submodule "git_modules/repoe"]
+	path = git_modules/repoe
+	url = https://github.com/brather1ng/RePoE
