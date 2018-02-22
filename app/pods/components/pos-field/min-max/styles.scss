@@ -1,0 +1,17 @@
+& {
+  display: flex;
+}
+
+.field-min-max__input-wrapper {
+  display: flex;
+}
+
+.field-min-max__min {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.field-min-max__max {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}

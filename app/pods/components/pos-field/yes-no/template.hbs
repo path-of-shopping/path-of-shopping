@@ -1,0 +1,12 @@
+<label class="field-yes-no__label">{{label}}</label>
+<div class="field-yes-no__buttons-wrapper">
+  <button {{action selectAny}} class="field-yes-no__button {{if isAnySelected 'field-yes-no__button--selected'}}" type="button">
+    {{t 'field.yes_no.any'}}
+  </button>
+  <button {{action selectYes}} class="field-yes-no__button {{if isYesSelected 'field-yes-no__button--selected'}}" type="button">
+    {{t 'field.yes_no.yes'}}
+  </button>
+  <button {{action selectNo}} class="field-yes-no__button {{if isNoSelected 'field-yes-no__button--selected'}}" type="button">
+    {{t 'field.yes_no.no'}}
+  </button>
+</div>
