@@ -1,17 +1,19 @@
 & {
-  display: flex;
+  @include form-block;
 }
 
-.field-min-max__input-wrapper {
-  display: flex;
+.field-min-max__label {
+  @include form-block-label;
 }
 
 .field-min-max__min {
+  @include form-block-input;
+
   border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
 }
 
 .field-min-max__max {
-  border-top-left-radius: 0;
+  @include form-block-input;
+
   border-bottom-left-radius: 0;
 }

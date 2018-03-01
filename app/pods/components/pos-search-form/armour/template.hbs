@@ -1,17 +1,28 @@
-<h1>{{t 'search_form.armour.title'}}</h1>
+<h1 class="search-form-armour__title">
+  {{t 'search_form.armour.title'}}
+</h1>
 
-{{pos-field/min-max
-  values=armourFilters.armour
-  label=(t 'search_form.armour.armour')}}
-
-{{pos-field/min-max
-  values=armourFilters.energy
-  label=(t 'search_form.armour.energy_shield')}}
-
-{{pos-field/min-max
-  values=armourFilters.evasion
-  label=(t 'search_form.armour.evasion_rating')}}
-
-{{pos-field/min-max
-  values=armourFilters.block
-  label=(t 'search_form.armour.block')}}
+<div class="search-form-armour__row">
+  <div class="search-form-armour__column">
+    {{pos-field/min-max
+      values=armourFilter.armour
+      label=(t 'search_form.armour.armour')}}
+  </div>
+  <div class="search-form-armour__column">
+    {{pos-field/min-max
+      values=armourFilter.energy
+      label=(t 'search_form.armour.energy_shield')}}
+  </div>
+</div>
+<div class="search-form-armour__row">
+  <div class="search-form-armour__column">
+    {{pos-field/min-max
+      values=armourFilter.evasion
+      label=(t 'search_form.armour.evasion_rating')}}
+  </div>
+  <div class="search-form-armour__column">
+    {{pos-field/min-max
+      values=armourFilter.block
+      label=(t 'search_form.armour.block')}}
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<ul class="search-results__items-wrapper">
+  {{#each items as |item|}}
+    <li class="search-results__item">
+      {{pos-search-results/item-details
+        item=item}}
+    </li>
+  {{/each}}
+</ul>

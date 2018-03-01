@@ -1,0 +1,16 @@
+& {
+  padding: ($padding * 2) $padding $padding $padding;
+}
+
+.search-results__items-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-results__item {
+  margin-top: $padding * 2;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}

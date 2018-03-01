@@ -1,26 +1,41 @@
-<h1>{{t 'search_form.map.title'}}</h1>
+<h1 class="search-form-map__title">
+  {{t 'search_form.map.title'}}
+</h1>
 
-{{pos-field/min-max
-  values=mapFilters.tier
-  label=(t 'search_form.map.tier')}}
-
-{{pos-field/min-max
-  values=mapFilters.packSize
-  label=(t 'search_form.map.pack_size')}}
-
-{{pos-field/min-max
-  values=mapFilters.iiq
-  label=(t 'search_form.map.item_quantity')}}
-
-{{pos-field/min-max
-  values=mapFilters.iir
-  label=(t 'search_form.map.item_rarity')}}
-
-{{pos-field/yes-no
-  value=mapFilters.shaped
-  label=(t 'search_form.map.shaped')}}
-
-<div>
-  <label>{{t 'search_form.map.series'}}</label>
-  {{input value=mapFilters.series}}
+<div class="search-form-map__row">
+  <div class="search-form-map__column">
+    {{pos-field/min-max
+      values=mapFilter.tier
+      label=(t 'search_form.map.tier')}}
+  </div>
+  <div class="search-form-map__column">
+    {{pos-field/min-max
+      values=mapFilter.packSize
+      label=(t 'search_form.map.pack_size')}}
+  </div>
+</div>
+<div class="search-form-map__row">
+  <div class="search-form-map__column">
+    {{pos-field/min-max
+      values=mapFilter.iiq
+      label=(t 'search_form.map.item_quantity')}}
+  </div>
+  <div class="search-form-map__column">
+    {{pos-field/min-max
+      values=mapFilter.iir
+      label=(t 'search_form.map.item_rarity')}}
+  </div>
+</div>
+<div class="search-form-map__row">
+  <div class="search-form-map__column">
+    {{pos-field/yes-no
+      value=mapFilter.shaped
+      label=(t 'search_form.map.shaped')}}
+  </div>
+  <div class="search-form-map__column">
+    <div>
+      <label>{{t 'search_form.map.series'}}</label>
+      {{input value=mapFilter.series}}
+    </div>
+  </div>
 </div>

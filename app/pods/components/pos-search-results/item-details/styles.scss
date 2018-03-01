@@ -1,0 +1,102 @@
+& {
+  display: flex;
+}
+
+.search-results-item-details__image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+}
+
+.search-results-item-details__card {
+  @include theme-border-radius;
+
+  display: flex;
+  position: relative;
+  flex: 1 1 auto;
+  padding: $padding;
+  background-color: $background-light-color;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-right: 30px solid $background-light-color;
+
+  }
+}
+
+.search-results-item-details__card-header {
+  @include theme-border-radius;
+
+  position: absolute;
+  top: -15px;
+  left: 15px;
+  display: flex;
+
+  align-items: center;
+  height: 30px;
+  padding: 0 $padding;
+  background-color: $white;
+  color: $black;
+  font-family: $font-family-accent;
+  font-size: 0.9rem;
+}
+
+.search-results-item-details__card-header--unique {
+  background-color: lighten($unique-color, 50%);
+  color: $unique-color;
+}
+
+.search-results-item-details__card-header--magic {
+  background-color: lighten($magic-color, 20%);
+  color: $magic-color;
+}
+
+.search-results-item-details__card-header--rare {
+  background-color: lighten($rare-color, 20%);
+  color: darken($rare-color, 40%);
+}
+
+.search-results-item-details__card-header-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.search-results-item-details__card-header-subtitle {
+  margin-left: 10px;
+  padding-top: 3px;
+}
+
+.search-results-item-details__card-mods {
+  flex: 1 1 40%
+}
+
+.search-results-item-details__card-mod {
+  padding: $padding / 8;
+}
+
+.search-results-item-details__card-properties {
+  flex: 1 1 30%;
+}
+
+.search-results-item-details__card-property {
+  padding: $padding / 8;
+}
+
+.search-results-item-details__card-requirements {
+  flex: 1 1 15%;
+}
+
+.search-results-item-details__card-requirement {
+  padding: $padding / 8;
+}
+
+.search-results-item-details__card-trade {
+  flex: 1 1 15%;
+}

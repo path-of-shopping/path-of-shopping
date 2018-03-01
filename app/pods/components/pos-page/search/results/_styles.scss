@@ -1,0 +1,11 @@
+& {
+  display: flex;
+}
+
+.page-search-result__sidebar {
+  @include sidebar;
+}
+
+.page-search-result__container {
+  flex: 1 1 auto;
+}

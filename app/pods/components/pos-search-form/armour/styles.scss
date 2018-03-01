@@ -1,0 +1,26 @@
+& {
+  @include search-form-section;
+}
+
+.search-form-armour__title {
+  @include search-form-section-header;
+}
+
+.search-form-armour__row {
+  display: flex;
+  align-items: center;
+  margin-bottom: $padding / 2;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.search-form-armour__column {
+  flex: 1 1 50%;
+  margin-left: $padding;
+
+  &:first-child {
+    margin-left: 0;
+  }
+}

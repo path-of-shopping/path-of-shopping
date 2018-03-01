@@ -1,0 +1,63 @@
+<div class="search-results-item-details__image-wrapper">
+  <img src="{{item.data.image}}" alt="{{item.data.name}}">
+</div>
+
+<div class="search-results-item-details__card">
+  <div class="search-results-item-details__card-header search-results-item-details__card-header--{{item.data.rarity}}">
+    <h1 class="search-results-item-details__card-header-title">
+      {{item.data.name}}
+    </h1>
+    <h2 class="search-results-item-details__card-header-subtitle">
+      {{item.data.base}}
+    </h2>
+  </div>
+
+  <ul class="search-results-item-details__card-mods">
+    {{#each item.data.implicitMods as |mod|}}
+      <li class="search-results-item-details__card-mod search-results-item-details__card-mod--implicit">
+        {{mod.value}}
+      </li>
+    {{/each}}
+
+    {{#each item.data.explicitMods as |mod|}}
+      <li class="search-results-item-details__card-mod search-results-item-details__card-mod--explicit">
+        {{mod.value}}
+      </li>
+    {{/each}}
+  </ul>
+
+  <ul class="search-results-item-details__card-properties">
+    {{#each item.data.properties as |property|}}
+      <li class="search-results-item-details__card-property">
+        {{property.name}}
+        {{#if property.value}}
+          <span class="search-results-item-details__card-property-value">
+            {{property.value}}
+          </span>
+        {{/if}}
+      </li>
+    {{/each}}
+  </ul>
+
+  <ul class="search-results-item-details__card-requirements">
+    {{#each item.data.requirements as |requirement|}}
+      <li class="search-results-item-details__card-requirement">
+        {{requirement.name}}
+        {{#if requirement.value}}
+          <span class="search-results-item-details__card-requirement-value">
+            {{requirement.value}}
+          </span>
+        {{/if}}
+      </li>
+    {{/each}}
+  </ul>
+
+  <div class="search-results-item-details__card-trade">
+    <div class="search-results-item-details__card-trade-price">
+      {{item.trade.priceAmount}} - {{item.trade.priceCurrency}}
+    </div>
+    <div class="search-results-item-details__card-trade-owner">
+      {{item.trade.accountName}} - {{item.trade.characterName}}
+    </div>
+  </div>
+</div>

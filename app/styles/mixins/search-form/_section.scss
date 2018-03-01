@@ -1,0 +1,25 @@
+@mixin search-form-section {
+  @include theme-border-radius;
+
+  position: relative;
+  margin-top: $padding * 1.5;
+  padding: $padding ($padding / 2) ($padding / 2);
+  background-color: $background-dark-color;
+}
+
+@mixin search-form-section-header {
+  @include theme-border-radius;
+
+  position: absolute;
+  top: -15px;
+  left: 15px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  font-family: $font-family-accent;
+  padding: 0 $padding;
+  background-color: $white;
+  color: $secondary-color;
+}

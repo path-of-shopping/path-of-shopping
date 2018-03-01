@@ -1,3 +1,32 @@
 & {
-  display: flex;
+  @include form-block;
+}
+
+.field-yes-no__label {
+  @include form-block-label;
+
+}
+
+.field-yes-no__button {
+  @include button;
+
+  background-color: $secondary-color;
+  width: 50px;
+  margin: 0;
+}
+
+.field-yes-no__button--selected {
+  background-color: $primary-color;
+}
+
+.field-yes-no__button--any {
+  border-top-right-radius: 0;
+}
+
+.field-yes-no__button--yes {
+  border-radius: 0;
+}
+
+.field-yes-no__button--no {
+  border-bottom-left-radius: 0;
 }

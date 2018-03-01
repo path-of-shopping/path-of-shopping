@@ -1,12 +1,18 @@
 <h1>{{t 'search_form.trade.title'}}</h1>
 
+{{pos-field/switch
+  label=(t 'search_form.trade.status')
+  value=tradeFilter.status
+  toggleableValue='online'
+  toggleableValueLabel=(t 'search_form.trade.status_online')}}
+
 <label>{{t 'search_form.trade.account'}}</label>
-{{input value=tradeFilters.account}}
+{{input value=tradeFilter.account}}
 
 <label>{{t 'search_form.trade.sale_type'}}</label>
-{{input value=tradeFilters.saleType}}
+{{input value=tradeFilter.saleType}}
 
 <label>{{t 'search_form.trade.price'}}</label>
-{{input value=tradeFilters.price.currency}}
-{{input value=tradeFilters.price.min}}
-{{input value=tradeFilters.price.max}}
+{{input value=tradeFilter.price.currency}}
+{{input value=tradeFilter.price.min}}
+{{input value=tradeFilter.price.max}}

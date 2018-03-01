@@ -11,11 +11,22 @@ export default {
     }
   },
   "search_form": {
+    "search_button": "Search !",
+    "league": {
+      "league": "League"
+    },
+    "name": {
+      "title": "Search&hellip;"
+    },
+    "type": {
+      "category": "Category",
+      "rarity": "Rarity"
+    },
     "weapon": {
       "title": "Weapon",
       "damage": "Damage",
       "aps": "APS",
-      "critical_chance": "Crit. chance",
+      "critical_chance": "Critical chance",
       "dps": "DPS",
       "pdps": "pDPS",
       "edps": "eDPS"
@@ -48,8 +59,8 @@ export default {
     "map": {
       "title": "Map",
       "tier": "Tier",
-      "item_quantity": "Item quantity",
-      "item_rarity": "Item rarity",
+      "item_quantity": "IIQ",
+      "item_rarity": "IIR",
       "pack_size": "Pack size",
       "shaped": "Shaped",
       "series": "Series"
@@ -70,6 +81,8 @@ export default {
     },
     "trade": {
       "title": "Title",
+      "status": "Status",
+      "status_online": "Online",
       "account": "Account",
       "sale_type": "Sale type",
       "price": "Price",

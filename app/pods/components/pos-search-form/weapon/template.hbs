@@ -1,25 +1,42 @@
-<h1>{{t 'search_form.weapon.title'}}</h1>
+<h1 class="search-form-weapon__title">
+  {{t 'search_form.weapon.title'}}
+</h1>
 
-{{pos-field/min-max
-  values=weaponFilters.damage
-  label=(t 'search_form.weapon.damage')}}
+<div class="search-form-weapon__row">
+  <div class="search-form-weapon__column">
+    {{pos-field/min-max
+      values=weaponFilter.damage
+      label=(t 'search_form.weapon.damage')}}
+  </div>
+  <div class="search-form-weapon__column">
+    {{pos-field/min-max
+      values=weaponFilter.aps
+      label=(t 'search_form.weapon.aps')}}
+  </div>
+</div>
 
-{{pos-field/min-max
-  values=weaponFilters.aps
-  label=(t 'search_form.weapon.aps')}}
+<div class="search-form-weapon__row">
+  <div class="search-form-weapon__column">
+    {{pos-field/min-max
+      values=weaponFilter.critical
+      label=(t 'search_form.weapon.critical_chance')}}
+  </div>
+  <div class="search-form-weapon__column">
+    {{pos-field/min-max
+      values=weaponFilter.dps
+      label=(t 'search_form.weapon.dps')}}
+  </div>
+</div>
 
-{{pos-field/min-max
-  values=weaponFilters.critical
-  label=(t 'search_form.weapon.critical_chance')}}
-
-{{pos-field/min-max
-  values=weaponFilters.dps
-  label=(t 'search_form.weapon.dps')}}
-
-{{pos-field/min-max
-  values=weaponFilters.pdps
-  label=(t 'search_form.weapon.pdps')}}
-
-{{pos-field/min-max
-  values=weaponFilters.edps
-  label=(t 'search_form.weapon.edps')}}
+<div class="search-form-weapon__row">
+  <div class="search-form-weapon__column">
+    {{pos-field/min-max
+      values=weaponFilter.pdps
+      label=(t 'search_form.weapon.pdps')}}
+  </div>
+  <div class="search-form-weapon__column">
+    {{pos-field/min-max
+      values=weaponFilter.edps
+      label=(t 'search_form.weapon.edps')}}
+  </div>
+</div>

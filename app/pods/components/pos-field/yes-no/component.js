@@ -2,8 +2,8 @@ import Component from '@ember/component';
 import {computed} from '@ember/object';
 import {equal} from '@ember/object/computed';
 
-const YES_VALUE = 'true';
-const NO_VALUE = 'false';
+const YES_VALUE = '1';
+const NO_VALUE = '0';
 
 export default Component.extend({
   label: null,

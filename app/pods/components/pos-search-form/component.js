@@ -1,19 +1,44 @@
 import Component from '@ember/component';
 import {inject as service} from '@ember/service';
+import Loadable from 'pos/mixins/components/loadable';
 
-export default Component.extend({
+export default Component.extend(Loadable, {
   searchQueryManager: service('managers/search-query-manager'),
+  searchPersister: service('persisters/search-persister'),
+  searchFetcher: service('fetchers/search-fetcher'),
 
-  typeFilters: null,
-  weaponFilters: null,
-  armourFilters: null,
-  socketFilters: null,
-  requirementFilters: null,
-  mapFilters: null,
-  miscellaneousFilters: null,
-  tradeFilters: null,
+  key: null,
+  onSearched: () => {},
+
+  filters: {
+    league: null,
+    name: null,
+    type: null,
+    weapon: null,
+    armour: null,
+    socket: null,
+    requirement: null,
+    map: null,
+    miscellaneous: null,
+    trade: null
+  },
 
   willInsertElement() {
-    this.setProperties(this.get('searchQueryManager').initializeFilters())
+    const {searchQueryManager, searchFetcher, key} = this.getProperties('searchQueryManager', 'searchFetcher', 'key');
+
+    this.set('filters', searchQueryManager.initializeFilters());
+
+    if (!key) return;
+
+    searchFetcher.fetch(key).then((search) => {
+      this.set('filters', searchQueryManager.hydrate(search.get('query')));
+    });
+  },
+
+  triggerSearch() {
+    const sanitizedFilters = this.get('searchQueryManager').sanitize(this.get('filters'));
+
+    this.loadWhile(this.get('searchPersister').persist(sanitizedFilters))
+      .then((search) => this.get('onSearched')(search));
   }
 });

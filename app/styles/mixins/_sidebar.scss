@@ -1,0 +1,6 @@
+@mixin sidebar {
+  width: $sidebar-width;
+  height: 100%;
+  padding: $padding ($padding / 2);
+  background-color: $background-light-color;
+}

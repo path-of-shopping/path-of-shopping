@@ -1,3 +1,10 @@
 @import 'variables';
 @import 'global';
+
+@import 'mixins/theme-border-radius';
+@import 'mixins/sidebar';
+@import 'mixins/form-block';
+@import 'mixins/button';
+@import 'mixins/search-form/section';
+
 @import 'pod-styles';

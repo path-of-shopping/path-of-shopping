@@ -1,6 +1,11 @@
 import Service from '@ember/service';
 
 const DEFAULT_FILTERS = {
+  LEAGUE: 'Standard',
+  NAME: {
+    name: '',
+    base: ''
+  },
   TYPE: {
     category: '',
     rarity: ''
@@ -51,25 +56,47 @@ const DEFAULT_FILTERS = {
     crafted: ''
   },
   TRADE: {
+    status: 'online',
     account: '',
     saleType: '',
     price: {currency: '', min: '', max: ''}
   }
 };
 
-
-
 export default Service.extend({
   initializeFilters() {
     return {
-      typeFilters: DEFAULT_FILTERS.TYPE,
-      weaponFilters: DEFAULT_FILTERS.WEAPON,
-      armourFilters: DEFAULT_FILTERS.ARMOUR,
-      socketFilters: DEFAULT_FILTERS.SOCKET,
-      requirementFilters: DEFAULT_FILTERS.REQUIREMENT,
-      mapFilters: DEFAULT_FILTERS.MAP,
-      miscellaneousFilters: DEFAULT_FILTERS.MISCELLANEOUS,
-      tradeFilters: DEFAULT_FILTERS.TRADE,
+      league: DEFAULT_FILTERS.LEAGUE,
+      name: DEFAULT_FILTERS.NAME,
+      type: DEFAULT_FILTERS.TYPE,
+      weapon: DEFAULT_FILTERS.WEAPON,
+      armour: DEFAULT_FILTERS.ARMOUR,
+      socket: DEFAULT_FILTERS.SOCKET,
+      requirement: DEFAULT_FILTERS.REQUIREMENT,
+      map: DEFAULT_FILTERS.MAP,
+      miscellaneous: DEFAULT_FILTERS.MISCELLANEOUS,
+      trade: DEFAULT_FILTERS.TRADE,
     };
+  },
+
+  hydrate(query) {
+    return Object.assign(this.initializeFilters(), query);
+  },
+
+  sanitize(filtersHash) {
+    const copy = JSON.parse(JSON.stringify(filtersHash));
+    this._clean(copy);
+    return copy;
+  },
+
+  _clean(hash) {
+    Object.keys(hash).forEach((key) => {
+      if (typeof hash[key] === 'object') {
+        this._clean(hash[key]);
+        if (Object.values(hash[key]).length) return;
+      } else if (!!hash[key] || hash[key] === 0 || hash[key] === false) return;
+
+      delete hash[key];
+    });
   }
 });

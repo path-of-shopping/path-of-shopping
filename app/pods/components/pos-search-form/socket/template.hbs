@@ -1,19 +1,23 @@
-<h1>{{t 'search_form.socket.title'}}</h1>
+<h1 class="search-form-socket__title">
+  {{t 'search_form.socket.title'}}
+</h1>
 
-<label>{{t 'search_form.socket.sockets'}}</label>
+<div class="search-form-socket__row">
+  <label class="search-form-socket__row-label">{{t 'search_form.socket.sockets'}}</label>
+  {{input class='search-form-socket__row-input search-form-socket__row-input--red' value=socketFilter.sockets.red placeholder=(t 'search_form.socket.red_abbrev')}}
+  {{input class='search-form-socket__row-input search-form-socket__row-input--green' value=socketFilter.sockets.green placeholder=(t 'search_form.socket.green_abbrev')}}
+  {{input class='search-form-socket__row-input search-form-socket__row-input--blue' value=socketFilter.sockets.blue placeholder=(t 'search_form.socket.blue_abbrev')}}
+  {{input class='search-form-socket__row-input search-form-socket__row-input--white' value=socketFilter.sockets.white placeholder=(t 'search_form.socket.white_abbrev')}}
+  {{input class='search-form-socket__row-input search-form-socket__row-input--min' value=socketFilter.sockets.min placeholder=(t 'search_form.socket.min')}}
+  {{input class='search-form-socket__row-input search-form-socket__row-input--max' value=socketFilter.sockets.max placeholder=(t 'search_form.socket.max')}}
+</div>
 
-{{input value=socketFilters.sockets.red placeholder=(t 'search_form.socket.red_abbrev')}}
-{{input value=socketFilters.sockets.green placeholder=(t 'search_form.socket.green_abbrev')}}
-{{input value=socketFilters.sockets.blue placeholder=(t 'search_form.socket.blue_abbrev')}}
-{{input value=socketFilters.sockets.white placeholder=(t 'search_form.socket.white_abbrev')}}
-{{input value=socketFilters.sockets.min placeholder=(t 'search_form.socket.min')}}
-{{input value=socketFilters.sockets.max placeholder=(t 'search_form.socket.max')}}
-
-<label>{{t 'search_form.socket.links'}}</label>
-
-{{input value=socketFilters.links.red placeholder=(t 'search_form.socket.red_abbrev')}}
-{{input value=socketFilters.links.green placeholder=(t 'search_form.socket.green_abbrev')}}
-{{input value=socketFilters.links.blue placeholder=(t 'search_form.socket.blue_abbrev')}}
-{{input value=socketFilters.links.white placeholder=(t 'search_form.socket.white_abbrev')}}
-{{input value=socketFilters.links.min placeholder=(t 'search_form.socket.min')}}
-{{input value=socketFilters.links.max placeholder=(t 'search_form.socket.max')}}
+<div class="search-form-socket__row">
+  <label class="search-form-socket__row-label">{{t 'search_form.socket.links'}}</label>
+  {{input class='search-form-socket__row-input search-form-socket__row-input--red' value=socketFilter.links.red placeholder=(t 'search_form.socket.red_abbrev')}}
+  {{input class='search-form-socket__row-input search-form-socket__row-input--green' value=socketFilter.links.green placeholder=(t 'search_form.socket.green_abbrev')}}
+  {{input class='search-form-socket__row-input search-form-socket__row-input--blue' value=socketFilter.links.blue placeholder=(t 'search_form.socket.blue_abbrev')}}
+  {{input class='search-form-socket__row-input search-form-socket__row-input--white' value=socketFilter.links.white placeholder=(t 'search_form.socket.white_abbrev')}}
+  {{input class='search-form-socket__row-input search-form-socket__row-input--min' value=socketFilter.links.min placeholder=(t 'search_form.socket.min')}}
+  {{input class='search-form-socket__row-input search-form-socket__row-input--max' value=socketFilter.links.max placeholder=(t 'search_form.socket.max')}}
+</div>

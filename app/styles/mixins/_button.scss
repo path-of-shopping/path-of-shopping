@@ -1,0 +1,22 @@
+@mixin button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $primary-color;
+  color: $white;
+  padding: 0 $padding;
+  height: 30px;
+  border-bottom-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+    box-shadow: 0 0 0 3px rgba($primary-color, 0.4);
+  }
+}

@@ -3,8 +3,8 @@
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'path-of-shopping',
-    podModulePrefix: 'path-of-shopping/pods',
+    modulePrefix: 'pos',
+    podModulePrefix: 'pos/pods',
     environment,
     rootURL: '/',
     locationType: 'auto',
@@ -20,8 +20,11 @@ module.exports = function(environment) {
     },
 
     APP: {
-      // Here you can pass flags/options to your application instance
-      // when it is created
+      API_URL: process.env.API_URL
+    },
+
+    i18n: {
+      defaultLocale: 'en'
     }
   };
 
