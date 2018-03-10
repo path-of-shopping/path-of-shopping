@@ -1,18 +1,50 @@
-<h1>{{t 'search_form.trade.title'}}</h1>
+<h1 class="search-form-trade__title">
+  {{t 'search_form.trade.title'}}
+</h1>
 
-{{pos-field/switch
-  label=(t 'search_form.trade.status')
-  value=tradeFilter.status
-  toggleableValue='online'
-  toggleableValueLabel=(t 'search_form.trade.status_online')}}
+<div class="search-form-trade__row">
+    {{pos-field/switch
+      label=(t 'search_form.trade.status')
+      value=tradeFilter.status
+      toggleableValue='online'
+      toggleableValueLabel=(t 'search_form.trade.status_online')}}
+  <div class="search-form-trade__column search-from-trade__column--space-left">
+    {{pos-field/text
+      label=(t 'search_form.trade.account')
+      value=tradeFilter.account}}
+  </div>
+</div>
 
-<label>{{t 'search_form.trade.account'}}</label>
-{{input value=tradeFilter.account}}
+<div class="search-form-trade__price">
+  <label class="search-form-trade__price-label">
+    {{t 'search_form.trade.price'}}
+  </label>
 
-<label>{{t 'search_form.trade.sale_type'}}</label>
-{{input value=tradeFilter.saleType}}
+  {{#pos-select
+    class='search-form-trade__price-currency'
+    options=currencies
+    value=tradeFilter.price.currency
+    onSelect=(action currencySelect)
+    searchableKey='name'
+    valueKey='id'
+    as |option highlightedName|}}
+    <img class="search-form-trade__price-currency__icon" src="{{option.image}}" alt="{{option.id}}">
+    <div class="search-form-trade__price-currency__label">
+      {{highlightedName}}
+    </div>
+  {{/pos-select}}
 
-<label>{{t 'search_form.trade.price'}}</label>
-{{input value=tradeFilter.price.currency}}
-{{input value=tradeFilter.price.min}}
-{{input value=tradeFilter.price.max}}
+  {{input
+    value=tradeFilter.price.min
+    placeholder=(t 'search_form.trade.min')
+    class='search-form-trade__price-min'}}
+
+  {{input
+    value=tradeFilter.price.max
+    placeholder=(t 'search_form.trade.max')
+    class='search-form-trade__price-max'}}
+</div>
+
+{{tradeFilter.price.currency}}
+
+

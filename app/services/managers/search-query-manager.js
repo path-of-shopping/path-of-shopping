@@ -58,7 +58,6 @@ const DEFAULT_FILTERS = {
   TRADE: {
     status: 'online',
     account: '',
-    saleType: '',
     price: {currency: '', min: '', max: ''}
   }
 };
@@ -80,13 +79,22 @@ export default Service.extend({
   },
 
   hydrate(query) {
-    return Object.assign(this.initializeFilters(), query);
+    const filters = this.initializeFilters();
+    this._hydrateNode(filters, query);
+    return filters;
   },
 
   sanitize(filtersHash) {
     const copy = JSON.parse(JSON.stringify(filtersHash));
     this._clean(copy);
     return copy;
+  },
+
+  _hydrateNode(targetNode, sourceNode) {
+    Object.keys(sourceNode).forEach((key) => {
+      if (typeof sourceNode[key] === 'object') return this._hydrateNode(targetNode[key], sourceNode[key]);
+      targetNode[key] = sourceNode[key];
+    });
   },
 
   _clean(hash) {

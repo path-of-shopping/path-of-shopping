@@ -1,0 +1,14 @@
+{{input
+  value=prompt
+  class='select__prompt'
+  key-down=(action promptKeyPress)
+  focus-out=(action promptBlur)
+  focus-in=(action promptFocus)}}
+
+<ul class="select__results {{unless isOpened 'select__results--hidden'}}">
+  {{#each filteredOptions as |option index|}}
+    <li {{action select option}} class="select__results-option {{if (eq index selectedIndex) 'select__results-option--selected'}}">
+      {{yield option (regex-highlight regexPrompt option searchableKey 'select__results-option-highlight')}}
+    </li>
+  {{/each}}
+</ul>

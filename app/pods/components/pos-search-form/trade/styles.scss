@@ -1,0 +1,62 @@
+& {
+  @include search-form-section;
+}
+
+.search-form-trade__title {
+  @include search-form-section-header;
+}
+
+.search-form-trade__row {
+  display: flex;
+  margin-bottom: $padding / 2;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.search-form-trade__price {
+  @include form-block;
+}
+
+.search-form-trade__column {
+  flex: 1 1 50%;
+  margin-left: $padding;
+
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+.search-from-trade__column--space-left {
+  margin-left: 20px;
+}
+
+.search-form-trade__price-currency {
+  flex: 1 1 auto;
+  margin-right: 30px;
+}
+
+.search-form-trade__price-currency__icon {
+  max-height: 30px;
+  margin-right: $padding / 4;
+}
+
+.search-form-trade__price-label {
+  @include form-block-label;
+
+  flex: 0 0 auto;
+  margin-right: 20px;
+}
+
+.search-form-trade__price-min {
+  @include form-block-input;
+
+  border-top-right-radius: 0;
+}
+
+.search-form-trade__price-max {
+  @include form-block-input;
+
+  border-bottom-left-radius: 0;
+}

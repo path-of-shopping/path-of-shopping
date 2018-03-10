@@ -80,11 +80,10 @@ export default {
       "crafted": "Crafted"
     },
     "trade": {
-      "title": "Title",
+      "title": "Trade",
       "status": "Status",
       "status_online": "Online",
       "account": "Account",
-      "sale_type": "Sale type",
       "price": "Price",
       "min": 'Min',
       "max": "Max"

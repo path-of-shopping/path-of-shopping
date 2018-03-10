@@ -26,13 +26,9 @@ export default Component.extend(Loadable, {
   willInsertElement() {
     const {searchQueryManager, searchFetcher, key} = this.getProperties('searchQueryManager', 'searchFetcher', 'key');
 
-    this.set('filters', searchQueryManager.initializeFilters());
+    if (!key) return this.set('filters', searchQueryManager.initializeFilters());
 
-    if (!key) return;
-
-    searchFetcher.fetch(key).then((search) => {
-      this.set('filters', searchQueryManager.hydrate(search.get('query')));
-    });
+    searchFetcher.fetch(key).then((search) => this.set('filters', searchQueryManager.hydrate(search.get('query'))));
   },
 
   triggerSearch() {

@@ -1,4 +1,5 @@
 <label class="field-switch__label">{{label}}</label>
-<button {{action toggleValue}} class="field-switch__button {{unless isOff 'field-switch__button--on'}}" type="button">
+
+<button {{action toggleValue}} class="field-switch__button {{if isOff 'field-switch__button--off'}}" type="button">
   {{toggleableValueLabel}}
 </button>

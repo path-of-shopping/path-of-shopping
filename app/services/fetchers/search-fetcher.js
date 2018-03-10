@@ -17,7 +17,7 @@ export default Service.extend({
 
     const searchFactory = this.get('searchFactory');
 
-    return this.cache(this.get('api').httpGet(`search/${key}`).then(searchFactory.create), key);
+    return this.cache(this.get('api').httpGet(`search/${key}`).then((rawSearch) => searchFactory.create(rawSearch)), key);
   },
 
   cache(promise, key) {

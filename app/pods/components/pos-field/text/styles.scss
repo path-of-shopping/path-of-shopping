@@ -1,0 +1,15 @@
+& {
+  @include form-block;
+}
+
+.field-text__label {
+  @include form-block-label;
+
+  flex: 0 1 auto;
+}
+
+.field-text__input {
+  @include form-block-input;
+
+  flex: 1 1 auto;
+}
