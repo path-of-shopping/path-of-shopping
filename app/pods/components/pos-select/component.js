@@ -5,6 +5,7 @@ import {later} from '@ember/runloop';
 const KEY_UP = 38;
 const KEY_DOWN = 40;
 const KEY_ENTER = 13;
+const ANY_OPTION_INDEX = -1;
 
 export default Component.extend({
   options: [],
@@ -13,7 +14,7 @@ export default Component.extend({
   value: null,
   onSelect: () => {},
 
-  selectedIndex: 0,
+  selectedIndex: ANY_OPTION_INDEX,
   prompt: '',
   isOpened: false,
 
@@ -39,8 +40,8 @@ export default Component.extend({
 
     const {selectedIndex, filteredOptions} = this.getProperties('selectedIndex', 'filteredOptions');
 
-    if (keyCode === KEY_ENTER) return this.select(filteredOptions.length ? filteredOptions[selectedIndex] : null);
-    if (keyCode === KEY_UP && selectedIndex > 0) return this.decrementProperty('selectedIndex');
+    if (keyCode === KEY_ENTER) return this.select(filteredOptions[selectedIndex] || null);
+    if (keyCode === KEY_UP && selectedIndex > ANY_OPTION_INDEX) return this.decrementProperty('selectedIndex');
     if (keyCode === KEY_DOWN && selectedIndex < (filteredOptions.length - 1)) return this.incrementProperty('selectedIndex');
   },
 
@@ -57,15 +58,14 @@ export default Component.extend({
   },
 
   select(option) {
-    console.log('selectin');
     const {onSelect, searchableKey} = this.getProperties('onSelect', 'searchableKey');
-    if (option) this.set('prompt', option.get(searchableKey));
+    this.set('prompt', option ? option.get(searchableKey) : '');
     this.set('isOpened', false);
     return onSelect(option);
   },
 
   filteredOptionsObserver: observer('filteredOptions', function() {
-    this.set('selectedIndex', 0);
+    this.set('selectedIndex', ANY_OPTION_INDEX);
   }),
 
   regexPrompt: computed('prompt', function() {

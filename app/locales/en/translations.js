@@ -10,6 +10,9 @@ export default {
       "no": "No"
     }
   },
+  "select": {
+    "any": "Any"
+  },
   "search_form": {
     "search_button": "Search !",
     "league": {
