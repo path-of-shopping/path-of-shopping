@@ -23,3 +23,16 @@
     margin-left: 0;
   }
 }
+
+.search-form-map__column--series {
+  display: flex;
+  align-items: center;
+}
+
+.search-form-map__series-label {
+  @include form-block-label;
+}
+
+.search-form-map__series-select {
+  flex: 1 1 215px;
+}

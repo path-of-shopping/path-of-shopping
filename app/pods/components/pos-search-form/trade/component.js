@@ -9,11 +9,7 @@ export default Component.extend({
 
   currencies: readOnly('staticDataFetcher.currencies'),
 
-  willInsertElement() {
-    console.log(this.get('tradeFilter'));
-  },
-
   currencySelect(currency) {
-    this.set('tradeFilter.price.currency', currency ? currency.get('id') : '');
+    this.set('tradeFilter.price.currency', currency ? currency.id : '');
   }
 });

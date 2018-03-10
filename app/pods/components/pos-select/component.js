@@ -18,10 +18,9 @@ export default Component.extend({
   prompt: '',
   isOpened: false,
 
-  didReceiveAttrs(attrs) {
+  didReceiveAttrs() {
     const {value, options, valueKey, searchableKey} = this.getProperties('value', 'options', 'valueKey', 'searchableKey');
 
-    console.log(attrs);
     if (!value) return;
 
     const selectedOption = options.find((option) => option.get(valueKey) === value);
@@ -65,6 +64,7 @@ export default Component.extend({
   },
 
   filteredOptionsObserver: observer('filteredOptions', function() {
+    if (this.get('filteredOptions').length) return this.set('selectedIndex', 0);
     this.set('selectedIndex', ANY_OPTION_INDEX);
   }),
 
