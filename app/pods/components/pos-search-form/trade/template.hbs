@@ -3,11 +3,12 @@
 </h1>
 
 <div class="search-form-trade__row">
-    {{pos-field/switch
-      label=(t 'search_form.trade.status')
-      value=tradeFilter.status
-      toggleableValue='online'
-      toggleableValueLabel=(t 'search_form.trade.status_online')}}
+  {{pos-field/switch
+    label=(t 'search_form.trade.status')
+    value=tradeFilter.status
+    toggleableValue='online'
+    toggleableValueLabel=(t 'search_form.trade.status_online')}}
+
   <div class="search-form-trade__column search-from-trade__column--space-left">
     {{pos-field/text
       label=(t 'search_form.trade.account')
@@ -16,12 +17,9 @@
 </div>
 
 <div class="search-form-trade__price">
-  <label class="search-form-trade__price-label">
-    {{t 'search_form.trade.price'}}
-  </label>
-
   {{#pos-select
     class='search-form-trade__price-currency'
+    label=(t 'search_form.trade.price')
     options=currencies
     value=tradeFilter.price.currency
     onSelect=(action currencySelect)
@@ -34,17 +32,15 @@
     </div>
   {{/pos-select}}
 
-  {{input
-    value=tradeFilter.price.min
-    placeholder=(t 'search_form.trade.min')
-    class='search-form-trade__price-min'}}
+  <div class="search-form-trade__price-min-max">
+    {{input
+      value=tradeFilter.price.min
+      placeholder=(t 'search_form.trade.min')
+      class='search-form-trade__price-min'}}
 
-  {{input
-    value=tradeFilter.price.max
-    placeholder=(t 'search_form.trade.max')
-    class='search-form-trade__price-max'}}
+    {{input
+      value=tradeFilter.price.max
+      placeholder=(t 'search_form.trade.max')
+      class='search-form-trade__price-max'}}
+  </div>
 </div>
-
-{{tradeFilter.price.currency}}
-
-

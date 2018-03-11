@@ -8,6 +8,7 @@ const KEY_ENTER = 13;
 const ANY_OPTION_INDEX = -1;
 
 export default Component.extend({
+  label: '',
   options: [],
   searchableKey: null,
   valueKey: null,

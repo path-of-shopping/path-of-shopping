@@ -4,7 +4,7 @@
 }
 
 @mixin form-block-label {
-  flex: 1 1 120px;
+  width: 90px;
   padding: $padding / 2;
   cursor: default;
   font-size: 0.9rem;

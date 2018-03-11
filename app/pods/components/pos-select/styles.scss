@@ -1,5 +1,14 @@
 & {
+  @include form-block;
+}
+
+.select__label {
+  @include form-block-label;
+}
+
+.select__wrapper {
   position: relative;
+  flex: 1 1 auto;
 }
 
 .select__prompt {
@@ -22,6 +31,8 @@
 
 .select__results {
   position: absolute;
+  top: 30px;
+  left: 0;
   width: 100%;
   max-height: 250px;
   z-index: 100;
