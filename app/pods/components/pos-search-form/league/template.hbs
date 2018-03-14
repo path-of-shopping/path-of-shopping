@@ -1,2 +1,4 @@
-<label>{{t 'search_form.league.league'}}</label>
-{{input value=leagueFilter}}
+{{pos-buttons-strip
+  options=leagues
+  value=leagueFilter
+  onSelect=(action leagueSelect)}}

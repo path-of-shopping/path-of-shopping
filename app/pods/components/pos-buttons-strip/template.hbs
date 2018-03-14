@@ -1,0 +1,5 @@
+{{#each options as |option|}}
+  <button {{action select option}} class="buttons-strip__button {{if (eq option value) 'buttons-strip__button--selected'}}" type="button">
+    {{option}}
+  </button>
+{{/each}}

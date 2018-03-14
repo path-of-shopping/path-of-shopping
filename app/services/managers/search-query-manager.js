@@ -1,7 +1,6 @@
-import Service from '@ember/service';
+import Service, {inject as service} from '@ember/service';
 
 const DEFAULT_FILTERS = {
-  LEAGUE: 'Standard',
   NAME: {
     id: '',
     name: '',
@@ -64,9 +63,11 @@ const DEFAULT_FILTERS = {
 };
 
 export default Service.extend({
+  staticDataFetcher: service('fetchers/static-data-fetcher'),
+
   initializeFilters() {
     return {
-      league: DEFAULT_FILTERS.LEAGUE,
+      league: this.get('staticDataFetcher.leagues')[0],
       name: DEFAULT_FILTERS.NAME,
       type: DEFAULT_FILTERS.TYPE,
       weapon: DEFAULT_FILTERS.WEAPON,

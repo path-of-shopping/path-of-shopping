@@ -1,0 +1,23 @@
+& {
+  display: flex;
+}
+
+.buttons-strip__button {
+  @include button;
+
+  flex: 1 1 auto;
+  border-radius: 0;
+  filter: grayscale(60%);
+
+  &:first-child {
+    border-bottom-left-radius: $border-radius;
+  }
+
+  &:last-child {
+    border-top-right-radius: $border-radius;
+  }
+}
+
+.buttons-strip__button--selected {
+  filter: none;
+}
