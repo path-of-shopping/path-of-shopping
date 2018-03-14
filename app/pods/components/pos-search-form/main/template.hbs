@@ -1,0 +1,41 @@
+<div class="search-form-main__row">
+  {{#pos-select
+    class='search-form-main__search'
+    label=(t 'search_form.main.search')
+    options=itemTerms
+    value=nameFilter.id
+    onSelect=(action itemTermSelect)
+    searchableKey='searchableName'
+    valueKey='id'
+    as |option highlightedName|}}
+    {{highlightedName}}
+  {{/pos-select}}
+</div>
+
+<div class="search-form-main__row">
+  <div class="search-form-main__column search-form-main__column--category">
+    {{#pos-select
+      label=(t 'search_form.main.category')
+      options=itemCategories
+      value=typeFilter.category
+      onSelect=(action itemCategorySelect)
+      searchableKey='label'
+      valueKey='id'
+      as |option highlightedName|}}
+      {{highlightedName}}
+    {{/pos-select}}
+  </div>
+
+  <div class="search-form-main__column search-form-main__column--rarity">
+    {{#pos-select
+      label=(t 'search_form.main.rarity')
+      options=itemRarities
+      value=typeFilter.rarity
+      onSelect=(action itemRaritySelect)
+      searchableKey='label'
+      valueKey='id'
+      as |option highlightedName|}}
+      {{highlightedName}}
+    {{/pos-select}}
+  </div>
+</div>

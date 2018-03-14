@@ -1,8 +1,9 @@
 import {helper} from '@ember/component/helper';
 import {htmlSafe} from '@ember/string';
+import safeGet from 'pos/utils/safe-get';
 
 export function regexHighlight([regex, item, key, cssModifier]) {
-  let value = item.get(key);
+  let value = safeGet(item, key);
   const match = value.match(regex);
 
   if (!match) return value;
@@ -28,7 +29,7 @@ export function regexHighlight([regex, item, key, cssModifier]) {
       buffer += '</span>';
       isWrapping = false;
     };
-    buffer += letter;
+    buffer += letter === ' ' ? '&nbsp;' : letter;
 
     return formattedValue + buffer;
   }, ''));

@@ -13,8 +13,7 @@
   "scripts": {
     "build": "ember build",
     "start": "ember server",
-    "test": "ember test",
-    "process-mods": "node tasks/process-mods.js"
+    "test": "ember test"
   },
   "dependencies": {
     "broccoli-asset-rev": "^2.6.0",

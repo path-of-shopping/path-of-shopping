@@ -3,6 +3,7 @@ import Service from '@ember/service';
 const DEFAULT_FILTERS = {
   LEAGUE: 'Standard',
   NAME: {
+    id: '',
     name: '',
     base: ''
   },

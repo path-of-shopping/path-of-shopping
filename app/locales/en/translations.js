@@ -18,10 +18,8 @@ export default {
     "league": {
       "league": "League"
     },
-    "name": {
-      "title": "Search&hellip;"
-    },
-    "type": {
+    "main": {
+      "search": "Search",
       "category": "Category",
       "rarity": "Rarity"
     },

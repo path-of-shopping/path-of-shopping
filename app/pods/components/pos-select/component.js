@@ -1,11 +1,13 @@
 import Component from '@ember/component';
 import {computed, observer} from '@ember/object';
 import {later} from '@ember/runloop';
+import safeGet from 'pos/utils/safe-get';
 
 const KEY_UP = 38;
 const KEY_DOWN = 40;
 const KEY_ENTER = 13;
 const ANY_OPTION_INDEX = -1;
+const MAX_DISPLAY_LENGTH = 25;
 
 export default Component.extend({
   label: '',
@@ -24,8 +26,8 @@ export default Component.extend({
 
     if (!value) return;
 
-    const selectedOption = options.find((option) => option.get(valueKey) === value);
-    this.set('prompt', selectedOption.get(searchableKey));
+    const selectedOption = options.find((option) => safeGet(option, valueKey) === value);
+    this.set('prompt', safeGet(selectedOption, searchableKey));
   },
 
   promptKeyPress(_value, event) {
@@ -58,10 +60,8 @@ export default Component.extend({
   },
 
   select(option) {
-    const {onSelect, searchableKey} = this.getProperties('onSelect', 'searchableKey');
-    this.set('prompt', option ? option.get(searchableKey) : '');
     this.set('isOpened', false);
-    return onSelect(option);
+    return this.get('onSelect')(option);
   },
 
   filteredOptionsObserver: observer('filteredOptions', function() {
@@ -70,7 +70,7 @@ export default Component.extend({
   }),
 
   regexPrompt: computed('prompt', function() {
-    const prompt = this.get('prompt');
+    const {prompt} = this.getProperties('prompt');
 
     if (!prompt) return null;
 
@@ -80,8 +80,10 @@ export default Component.extend({
   filteredOptions: computed('regexPrompt', function() {
     const {options, regexPrompt, searchableKey} = this.getProperties('options', 'regexPrompt', 'searchableKey');
 
-    if (regexPrompt === null) return options;
+    if (regexPrompt === null) return options.length <= MAX_DISPLAY_LENGTH ? options : [];
 
-    return options.filter((option) => regexPrompt.test(option.get(searchableKey)));
+    const filteredOptions = options.filter((option) => regexPrompt.test(safeGet(option, searchableKey).replace(/\(.+\)/g, '')));
+
+    return filteredOptions.length <= MAX_DISPLAY_LENGTH ? filteredOptions : [];
   })
 });
