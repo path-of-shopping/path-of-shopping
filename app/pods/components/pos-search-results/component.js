@@ -12,8 +12,10 @@ export default Component.extend(Loadable, {
   search: null,
   items: Ember.A([]),
 
-  willInsertElement() {
+  didReceiveAttrs() {
     const {key, items, searchFetcher, itemsFetcher} = this.getProperties('key', 'items', 'searchFetcher', 'itemsFetcher');
+
+    this._clear();
 
     this.loadWhile(searchFetcher.fetch(key).then((search) => {
       this.set('search', search);
@@ -34,5 +36,10 @@ export default Component.extend(Loadable, {
     itemsPromise.then((loadedItems) => items.addObjects(loadedItems));
 
     return itemsPromise;
+  },
+
+  _clear() {
+    this.set('search', null);
+    this.get('items').clear();
   }
 });
