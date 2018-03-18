@@ -1,5 +1,6 @@
 & {
   display: flex;
+  align-items: center;
   margin-top: $padding / 2;
 
   &:first-child {
@@ -69,4 +70,8 @@
 
 .search-form-mod-item__max {
   border-bottom-left-radius: 0;
+}
+
+.search-form-mod-item__remove {
+  margin-left: $padding / 2;
 }

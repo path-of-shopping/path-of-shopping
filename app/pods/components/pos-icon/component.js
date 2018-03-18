@@ -1,5 +1,6 @@
 import Component from '@ember/component';
 import {computed} from '@ember/object';
+import {bool} from '@ember/object/computed';
 
 const BASE_CLASS = 'fas';
 const CLASS_PREFIX = 'fa-';
@@ -8,9 +9,10 @@ const SPINNABLE_CLASSES = ['spinner'];
 
 export default Component.extend({
   tagName: 'i',
-  classNameBindings: [BASE_CLASS, 'iconClass', 'modifierClass'],
+  classNameBindings: ['iconClass', 'modifierClass', 'isClickable:icon--clickable'],
 
   icon: '',
+  onClick: null,
 
   iconClass: computed('icon', function() {
     return `${BASE_CLASS} ${CLASS_PREFIX}${this.get('icon')}`;
@@ -22,5 +24,14 @@ export default Component.extend({
     if (SPINNABLE_CLASSES.includes(icon)) return `${CLASS_PREFIX}pulse`;
 
     return null;
-  })
+  }),
+
+  isClickable: bool('onClick'),
+
+  click() {
+    const onClick = this.get('onClick');
+    if (!onClick) return;
+
+    onClick();
+  }
 });

@@ -9,6 +9,7 @@ export default Component.extend({
   item: null,
   filterType: null,
   onModUpdate: () => {},
+  onModRemove: () => {},
 
   mods: readOnly('staticDataFetcher.mods'),
   isWeightRequired: equal('filterType', ModFilterTypes.WEIGHT),
@@ -16,5 +17,10 @@ export default Component.extend({
   modSelect(mod) {
     this.set('item.mod', mod ? mod.get('id') : null);
     this.get('onModUpdate')(mod);
+  },
+
+  remove() {
+    const {onModRemove, item} = this.getProperties('onModRemove', 'item');
+    onModRemove(item);
   }
 });

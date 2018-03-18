@@ -23,5 +23,9 @@ export default Component.extend({
     if (hasEmptyMods) return;
 
     this.get('block.mods').pushObject(this.get('searchQueryManager').initModFilterItem());
+  },
+
+  removeMod(mod) {
+    this.get('block.mods').removeObject(mod);
   }
 });
