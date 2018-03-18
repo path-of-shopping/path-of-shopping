@@ -8,6 +8,7 @@ export default Component.extend({
 
   item: null,
   filterType: null,
+  canRemove: false,
   onModUpdate: () => {},
   onModRemove: () => {},
 

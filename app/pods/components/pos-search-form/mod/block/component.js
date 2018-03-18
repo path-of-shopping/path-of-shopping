@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import {inject as service} from '@ember/service';
-import {equal, or} from '@ember/object/computed';
+import {equal, or, gt} from '@ember/object/computed';
 import ModFilterTypes from 'pos/constants/mod-filter-types';
 
 export default Component.extend({
@@ -12,6 +12,7 @@ export default Component.extend({
   isWeightType: equal('block.type', ModFilterTypes.WEIGHT),
   isCountType: equal('block.type', ModFilterTypes.COUNT),
   isMinMaxRequired: or('isWeightType', 'isCountType'),
+  canRemoveItem: gt('block.mods.length', 1),
 
   typeSelect(type) {
     this.set('block.type', type);

@@ -31,7 +31,9 @@ as |option highlightedName|}}
   placeholder=(t 'search_form.mod.max')
   class='search-form-mod-item__max'}}
 
-{{pos-icon
-  class='search-form-mod-item__remove'
-  icon='minus-circle'
-  onClick=(action remove)}}
+{{#if canRemove}}
+  {{pos-icon
+    class='search-form-mod-item__remove'
+    icon='minus-circle'
+    onClick=(action remove)}}
+{{/if}}

@@ -1,5 +1,6 @@
 {{#each block.mods as |modItem|}}
   {{pos-search-form/mod/item
+    canRemove=canRemoveItem
     onModUpdate=(action ensureEmptyMod)
     onModRemove=(action removeMod)
     filterType=block.type
