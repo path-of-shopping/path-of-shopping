@@ -14,6 +14,10 @@ export default Component.extend({
   isMinMaxRequired: or('isWeightType', 'isCountType'),
   canRemoveItem: gt('block.mods.length', 1),
 
+  didReceiveAttrs() {
+    this.ensureEmptyMod();
+  },
+
   typeSelect(type) {
     this.set('block.type', type);
   },
