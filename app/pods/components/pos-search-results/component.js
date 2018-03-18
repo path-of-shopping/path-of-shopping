@@ -21,7 +21,10 @@ export default Component.extend(Loadable, {
       this.set('search', search);
       const nextItemIds = search.getNextItemIds();
       if (nextItemIds.length === 0) return;
-      return itemsFetcher.fetch(search.get('key'), nextItemIds).then((loadedItems) => items.addObjects(loadedItems));
+      return itemsFetcher.fetch(search.get('key'), nextItemIds).then((loadedItems) => {
+        items.addObjects(loadedItems);
+        window.scrollTo(0,0);
+      });
     }));
   },
 
