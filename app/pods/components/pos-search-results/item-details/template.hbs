@@ -1,5 +1,9 @@
 <div class="search-results-item-details__image-wrapper">
   <img src="{{item.data.image}}" alt="{{item.data.name}}">
+
+  {{pos-sockets
+    class='search-results-item-details__sockets'
+    sockets=item.data.sockets}}
 </div>
 
 <div class="search-results-item-details__card">

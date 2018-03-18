@@ -1,0 +1,7 @@
+{{#each displaySockets as |socket index|}}
+  <li class="sockets__socket sockets__socket--{{socket.color}} sockets__socket--position-{{index}}"></li>
+
+  {{#if socket.isLinked}}
+    <li class="sockets__link sockets__link--position-{{index}}"></li>
+  {{/if}}
+{{/each}}

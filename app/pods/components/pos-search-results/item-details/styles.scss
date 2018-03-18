@@ -3,10 +3,23 @@
 }
 
 .search-results-item-details__image-wrapper {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 150px;
+}
+
+.search-results-item-details__sockets {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 200ms ease;
+
+  &:hover {
+    opacity: 0.25;
+  }
 }
 
 .search-results-item-details__card {
