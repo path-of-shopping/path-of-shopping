@@ -1,0 +1,30 @@
+{{#pos-select
+  class='search-form-mod-item__select'
+  options=mods
+  visibleOptionsLimit=100
+  value=item.mod
+  onSelect=(action modSelect)
+  searchableKey='name'
+  valueKey='id'
+as |option highlightedName|}}
+  <span class="search-form-mod-item__select-item-type search-form-mod-item__select-item-type--{{option.type}}">
+    {{option.type}}
+  </span>
+
+  {{highlightedName}}
+{{/pos-select}}
+
+{{input
+  value=item.weight
+  placeholder=(t 'search_form.mod.weight')
+  class='search-form-mod-item__weight'}}
+
+{{input
+  value=item.min
+  placeholder=(t 'search_form.mod.min')
+  class='search-form-mod-item__min'}}
+
+{{input
+  value=item.max
+  placeholder=(t 'search_form.mod.max')
+  class='search-form-mod-item__max'}}

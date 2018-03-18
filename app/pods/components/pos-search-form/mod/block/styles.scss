@@ -1,0 +1,36 @@
+& {
+  @include theme-border-radius;
+
+  padding: $padding / 2;
+  background-color: $background-light-color;
+}
+
+.search-form-mod__options {
+  display: flex;
+  align-items: center;
+  margin-top: $padding / 2;
+}
+
+.search-form-mod__options-type {
+  flex-grow: 1;
+
+  * {
+    text-transform: capitalize;
+  }
+}
+
+.search-form-mod__options-min,
+.search-form-mod__options-max {
+  @include form-block-input;
+
+  width: 10%;
+}
+
+.search-form-mod__options-min {
+  margin-left: $padding / 2;
+  border-top-right-radius: 0;
+}
+
+.search-form-mod__options-max {
+  border-bottom-left-radius: 0;
+}

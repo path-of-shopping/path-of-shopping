@@ -51,14 +51,18 @@
   align-items: center;
   padding: $padding / 4;
   cursor: pointer;
+  line-height: 1.4;
 
   &:hover {
     color: lighten($primary-color, 20%);
   }
 }
 
-.select__results-option-highlight {
+.select__results-option-highlight-wrap {
+  word-wrap: break-word;
+}
 
+.select__results-option-highlight {
   color: lighten($primary-color, 20%);
 }
 

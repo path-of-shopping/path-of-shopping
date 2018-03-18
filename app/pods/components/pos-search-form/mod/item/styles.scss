@@ -1,0 +1,72 @@
+& {
+  display: flex;
+  margin-top: $padding / 2;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.search-form-mod-item__select {
+  flex-grow: 1;
+
+  .select__results {
+    width: 490px;
+  }
+}
+
+.search-form-mod-item__select-item-type {
+  @include theme-border-radius;
+
+  margin-right: $padding / 2;
+  padding: ($padding / 8) ($padding / 2);
+  color: $white;
+  font-size: 0.8rem;
+}
+
+.search-form-mod-item__select-item-type--pseudo {
+  background-color: $pseudo-color;
+}
+
+.search-form-mod-item__select-item-type--crafted {
+  background-color: $crafted-color;
+}
+
+.search-form-mod-item__select-item-type--explicit {
+  background-color: $explicit-color;
+}
+
+.search-form-mod-item__select-item-type--monster {
+  background-color: $monster-color;
+}
+
+.search-form-mod-item__select-item-type--enchant {
+  background-color: $enchant-color;
+}
+
+.search-form-mod-item__select-item-type--implicit {
+  background: $implicit-color;
+}
+
+.search-form-mod-item__weight {
+  @include form-block-input;
+
+  width: 13%;
+  margin-left: $padding / 2;
+}
+
+.search-form-mod-item__min,
+.search-form-mod-item__max {
+  @include form-block-input;
+
+  width: 10%;
+}
+
+.search-form-mod-item__min {
+  margin-left: $padding / 2;
+  border-top-right-radius: 0;
+}
+
+.search-form-mod-item__max {
+  border-bottom-left-radius: 0;
+}

@@ -36,6 +36,10 @@
     class='search-form__form-section'
     tradeFilter=filters.trade}}
 
+  {{pos-search-form/mod
+    class='search-form__form-section'
+    modFilter=filters.mod}}
+
   {{#pos-button type='submit' isLoading=isLoading class='search-form__form-submit'}}
     {{t 'search_form.search_button'}}
   {{/pos-button}}

@@ -1,0 +1,15 @@
+& {
+  @include search-form-section;
+}
+
+.search-form-mod__title {
+  @include search-form-section-header;
+}
+
+.search-form-mod__add-block {
+  @include button;
+
+  display: block;
+  margin: ($padding / 2) auto 0;
+  width: 50%;
+}

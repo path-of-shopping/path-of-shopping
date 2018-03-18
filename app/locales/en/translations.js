@@ -88,6 +88,13 @@ export default {
       "price": "Price",
       "min": 'Min',
       "max": "Max"
+    },
+    "mod": {
+      "title": "Mods",
+      "add_block": "New block",
+      "min": "Min",
+      "max": "Max",
+      "weight": "Weight"
     }
   }
 };

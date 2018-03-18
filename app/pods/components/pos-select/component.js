@@ -7,7 +7,7 @@ const KEY_UP = 38;
 const KEY_DOWN = 40;
 const KEY_ENTER = 13;
 const ANY_OPTION_INDEX = -1;
-const MAX_DISPLAY_LENGTH = 25;
+const DEFAULT_VISIBLE_OPTIONS_LIMIT = 25;
 
 export default Component.extend({
   label: '',
@@ -16,6 +16,7 @@ export default Component.extend({
   valueKey: null,
   value: null,
   onSelect: () => {},
+  visibleOptionsLimit: DEFAULT_VISIBLE_OPTIONS_LIMIT,
 
   selectedIndex: ANY_OPTION_INDEX,
   prompt: '',
@@ -74,16 +75,16 @@ export default Component.extend({
 
     if (!prompt) return null;
 
-    return new RegExp(prompt.split('').map((char) => `(${char})`).join('.*'), 'i');
+    return new RegExp(prompt.replace(/\W/g, '').split('').map((char) => `(${char})`).join('.*'), 'i');
   }),
 
   filteredOptions: computed('regexPrompt', function() {
-    const {options, regexPrompt, searchableKey} = this.getProperties('options', 'regexPrompt', 'searchableKey');
+    const {options, regexPrompt, searchableKey, visibleOptionsLimit} = this.getProperties('options', 'regexPrompt', 'searchableKey', 'visibleOptionsLimit');
 
-    if (regexPrompt === null) return options.length <= MAX_DISPLAY_LENGTH ? options : [];
+    if (regexPrompt === null) return options.length <= visibleOptionsLimit ? options : [];
 
     const filteredOptions = options.filter((option) => regexPrompt.test(safeGet(option, searchableKey).replace(/\(.+\)/g, '')));
 
-    return filteredOptions.length <= MAX_DISPLAY_LENGTH ? filteredOptions : [];
+    return filteredOptions.length <= visibleOptionsLimit ? filteredOptions : [];
   })
 });

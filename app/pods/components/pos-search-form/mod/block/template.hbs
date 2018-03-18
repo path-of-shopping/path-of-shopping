@@ -1,0 +1,25 @@
+{{#each block.mods as |modItem|}}
+  {{pos-search-form/mod/item
+    onModUpdate=(action ensureEmptyMod)
+    item=modItem}}
+{{/each}}
+
+<div class="search-form-mod__options">
+  {{pos-buttons-strip
+    class='search-form-mod__options-type'
+    options=typeOptions
+    value=block.type
+    onSelect=(action typeSelect)}}
+
+  {{#if isMinMaxRequired}}
+    {{input
+      class='search-form-mod__options-min'
+      value=block.min
+      placeholder=(t 'search_form.mod.min')}}
+
+    {{input
+      class='search-form-mod__options-max'
+      value=block.max
+      placeholder=(t 'search_form.mod.max')}}
+  {{/if}}
+</div>

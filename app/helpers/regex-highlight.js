@@ -2,7 +2,7 @@ import {helper} from '@ember/component/helper';
 import {htmlSafe} from '@ember/string';
 import safeGet from 'pos/utils/safe-get';
 
-export function regexHighlight([regex, item, key, cssModifier]) {
+export function regexHighlight([regex, item, key, cssClass]) {
   let value = safeGet(item, key);
   const match = value.match(regex);
 
@@ -16,12 +16,12 @@ export function regexHighlight([regex, item, key, cssModifier]) {
 
   let isWrapping = false;
 
-  return htmlSafe(value.split('').reduce((formattedValue, letter) => {
+  const formattedValue = value.split('').reduce((formattedValue, letter) => {
     let buffer = '';
 
     if (letterToWrap && letter.toLowerCase() === letterToWrap.toLowerCase()) {
       if (!isWrapping) {
-        buffer += `<span class="${cssModifier}">`;
+        buffer += `<span class="${cssClass}">`;
         isWrapping = true;
       }
       letterToWrap = match.shift();
@@ -29,10 +29,12 @@ export function regexHighlight([regex, item, key, cssModifier]) {
       buffer += '</span>';
       isWrapping = false;
     };
-    buffer += letter === ' ' ? '&nbsp;' : letter;
+    buffer += letter;
 
     return formattedValue + buffer;
-  }, ''));
+  }, '');
+
+  return htmlSafe(`<span class="${cssClass}-wrap">${formattedValue}</span>`)
 }
 
 export default helper(regexHighlight);

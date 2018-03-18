@@ -1,0 +1,18 @@
+<h1 class="search-form-mod__title">
+  {{t 'search_form.mod.title'}}
+</h1>
+
+{{#each modFilter as |modBlock|}}
+  {{#if canRemoveBlock}}
+    <button {{action removeBlock modBlock}} class="search-form-mod__remove-block" type="button">
+      &times;
+    </button>
+  {{/if}}
+
+  {{pos-search-form/mod/block
+    block=modBlock}}
+{{/each}}
+
+<button {{action addBlock}} class="search-form-mod__add-block" type="button">
+  {{t 'search_form.mod.add_block'}}
+</button>
