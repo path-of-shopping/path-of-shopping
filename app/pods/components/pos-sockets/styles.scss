@@ -4,6 +4,10 @@
   height: 140px;
 }
 
+&.sockets--four {
+  height: 93px;
+}
+
 .sockets__socket {
   position: absolute;
   display: block;
@@ -35,15 +39,13 @@
 }
 
 .sockets__socket--position-2 {
-  top: 50%;
+  top: 45px;
   right: 0;
-  transform: translateY(-50%);
 }
 
 .sockets__socket--position-3 {
-  top: 50%;
+  top: 45px;
   left: 0;
-  transform: translateY(-50%);
 }
 
 .sockets__socket--position-4 {
@@ -67,8 +69,7 @@
 
 .sockets__link--position-0 {
   top: 17px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 28px;
 }
 
 .sockets__link--position-1 {
@@ -79,9 +80,8 @@
 }
 
 .sockets__link--position-2 {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 62px;
+  left: 28px;
 }
 
 .sockets__link--position-3 {
@@ -92,6 +92,5 @@
 
 .sockets__link--position-4 {
   bottom: 17px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 28px;
 }
