@@ -14,10 +14,12 @@ as |option highlightedName|}}
   {{highlightedName}}
 {{/pos-select}}
 
-{{input
-  value=item.weight
-  placeholder=(t 'search_form.mod.weight')
-  class='search-form-mod-item__weight'}}
+{{#if isWeightRequired}}
+  {{input
+    value=item.weight
+    placeholder=(t 'search_form.mod.weight')
+    class='search-form-mod-item__weight'}}
+{{/if}}
 
 {{input
   value=item.min
