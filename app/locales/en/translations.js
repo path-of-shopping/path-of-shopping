@@ -14,7 +14,7 @@ export default {
     "any": "Any"
   },
   "search_form": {
-    "search_button": "Search !",
+    "search_button": "Search",
     "league": {
       "league": "League"
     },

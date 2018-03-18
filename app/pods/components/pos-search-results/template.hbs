@@ -1,11 +1,18 @@
-<ul class="search-results__items-wrapper">
-  {{#each items as |item|}}
-    <li class="search-results__item">
-      {{pos-search-results/item-details
-        item=item}}
-    </li>
-  {{/each}}
-</ul>
+{{#unless isLoading}}
+  <ul class="search-results__items-wrapper">
+    {{#each items as |item|}}
+      <li class="search-results__item">
+        {{pos-search-results/item-details
+          item=item}}
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <div class="search-results__loading">
+    {{pos-icon icon='spinner'}}
+  </div>
+{{/unless}}
+
 
 {{pos-lazy-loader
   onLazyLoad=(action lazyLoad)}}

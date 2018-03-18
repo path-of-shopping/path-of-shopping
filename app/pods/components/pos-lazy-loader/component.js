@@ -1,17 +1,17 @@
 import Component from '@ember/component';
+import Loadable from 'pos/mixins/components/loadable';
 import InViewportMixin from 'ember-in-viewport';
 
-export default Component.extend(InViewportMixin, {
+export default Component.extend(InViewportMixin, Loadable, {
   onLazyLoad: () => {},
 
   isLoading: false,
   isFinish: false,
 
   didEnterViewport() {
-    const response = this.get('onLazyLoad')();
-    if (!response) return;
+    const responsePromise = this.get('onLazyLoad')();
+    if (!responsePromise) return;
 
-    this.set('isLoading', true);
-    response.then(() => this.set('isLoading', false));
+    this.loadWhile(responsePromise);
   }
 });
