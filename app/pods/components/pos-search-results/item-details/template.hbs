@@ -57,11 +57,32 @@
   </ul>
 
   <div class="search-results-item-details__card-trade">
-    <div class="search-results-item-details__card-trade-price">
-      {{item.trade.priceAmount}} - {{item.trade.priceCurrency}}
-    </div>
+    {{#if hasPrice}}
+      <div class="search-results-item-details__card-trade-price">
+        {{item.trade.priceAmount}}
+        <img src={{priceCurrencyImage}} class="search-results-item-details__card-trade-currency" alt={{item.trade.priceCurrency}}>
+      </div>
+    {{/if}}
+
     <div class="search-results-item-details__card-trade-owner">
-      {{item.trade.accountName}} - {{item.trade.characterName}}
+      <div class="search-results-item-details__card-trade-owner-char">
+        {{item.trade.characterName}}
+      </div>
+      <div class="search-results-item-details__card-trade-owner-account">
+        {{item.trade.accountName}}
+      </div>
     </div>
+
+    <input type="text" value={{item.trade.whisper}} class="search-results-item-details__card-trade-whisper-input">
+
+    {{#pos-button onClick=(action copyWhisperToClipboard) class='search-results-item-details__card-trade-whisper'}}
+      {{#unless isCopied}}
+        {{pos-icon icon='copy'}}
+        {{t 'search_results.copy'}}
+      {{else}}
+        {{pos-icon icon='paste'}}
+        {{t 'search_results.copied'}}
+      {{/unless}}
+    {{/pos-button}}
   </div>
 </div>

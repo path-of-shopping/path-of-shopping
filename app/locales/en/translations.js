@@ -96,5 +96,9 @@ export default {
       "max": "Max",
       "weight": "Weight"
     }
+  },
+  "search_results": {
+    "copy": "Copy whisper",
+    "copied": "Copied"
   }
 };
