@@ -1,17 +1,18 @@
 import Component from '@ember/component';
-import Loadable from 'pos/mixins/components/loadable';
 import InViewportMixin from 'ember-in-viewport';
+import {task} from 'ember-concurrency';
 
-export default Component.extend(InViewportMixin, Loadable, {
+export default Component.extend(InViewportMixin, {
   onLazyLoad: () => {},
 
   isLoading: false,
   isFinish: false,
 
-  didEnterViewport() {
-    const responsePromise = this.get('onLazyLoad')();
-    if (!responsePromise) return;
+  lazyLoad: task(function *() {
+    yield this.get('onLazyLoad')();
+  }).drop(),
 
-    this.loadWhile(responsePromise);
+  didEnterViewport() {
+    this.get('lazyLoad').perform();
   }
 });

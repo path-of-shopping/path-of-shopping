@@ -1,9 +1,9 @@
 import Component from '@ember/component';
 import {inject as service} from '@ember/service';
-import Loadable from 'pos/mixins/components/loadable';
 import Ember from 'ember';
+import {task} from 'ember-concurrency';
 
-export default Component.extend(Loadable, {
+export default Component.extend({
   searchFetcher: service('fetchers/search-fetcher'),
   itemsFetcher: service('fetchers/items-fetcher'),
 
@@ -13,24 +13,25 @@ export default Component.extend(Loadable, {
   items: Ember.A([]),
 
   didReceiveAttrs() {
+    this._clear();
+    this.get('initialLoad').perform();
+  },
+
+  initialLoad: task(function *() {
     const {key, items, searchFetcher, itemsFetcher} = this.getProperties('key', 'items', 'searchFetcher', 'itemsFetcher');
 
-    this._clear();
+    const search = yield searchFetcher.fetch(key);
+    this.set('search', search);
+    const nextItemIds = search.getNextItemIds();
 
-    this.loadWhile(searchFetcher.fetch(key).then((search) => {
-      this.set('search', search);
-      const nextItemIds = search.getNextItemIds();
-      if (nextItemIds.length === 0) return;
-      return itemsFetcher.fetch(search.get('key'), nextItemIds).then((loadedItems) => {
-        items.addObjects(loadedItems);
-        window.scrollTo(0,0);
-      });
-    }));
-  },
+    const loadedItems = yield itemsFetcher.fetch(key, nextItemIds);
+    items.addObjects(loadedItems);
+    window.scrollTo(0,0);
+  }).drop(),
 
   lazyLoad() {
     const {search, items, itemsFetcher} = this.getProperties('search', 'items', 'itemsFetcher');
-    if (!search) return;
+    if (!search) return null;
 
     const nextItemIds = search.getNextItemIds();
     if (nextItemIds.length === 0) return null;

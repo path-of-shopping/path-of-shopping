@@ -40,7 +40,7 @@
     class='search-form__form-section'
     modFilter=filters.mod}}
 
-  {{#pos-button type='submit' isLoading=isLoading class='search-form__form-submit'}}
+  {{#pos-button type='submit' isLoading=searchSubmission.isRunning class='search-form__form-submit'}}
     {{t 'search_form.search_button'}}
   {{/pos-button}}
 </form>

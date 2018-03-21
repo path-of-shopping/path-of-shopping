@@ -1,8 +1,8 @@
 import Component from '@ember/component';
 import {inject as service} from '@ember/service';
-import Loadable from 'pos/mixins/components/loadable';
+import {task} from 'ember-concurrency';
 
-export default Component.extend(Loadable, {
+export default Component.extend({
   searchQueryManager: service('managers/search-query-manager'),
   searchPersister: service('persisters/search-persister'),
   searchFetcher: service('fetchers/search-fetcher'),
@@ -31,10 +31,13 @@ export default Component.extend(Loadable, {
     searchFetcher.fetch(key).then((search) => this.set('filters', searchQueryManager.hydrateFilters(search.get('query'))));
   },
 
+  searchSubmission: task(function *(sanitizedFilters) {
+    const persistedSearch = yield this.get('searchPersister').persist(sanitizedFilters);
+    this.get('onSearched')(persistedSearch);
+  }).drop(),
+
   triggerSearch() {
     const sanitizedFilters = this.get('searchQueryManager').sanitize(this.get('filters'));
-
-    this.loadWhile(this.get('searchPersister').persist(sanitizedFilters))
-      .then((search) => this.get('onSearched')(search));
+    this.get('searchSubmission').perform(sanitizedFilters);
   }
 });
