@@ -17,6 +17,12 @@ export default Component.extend({
   itemRarities: ItemRarities,
 
   itemTermSelect(itemTerm) {
+    if (!itemTerm) return this.set('nameFilter', {
+      id: null,
+      name: null,
+      base: null
+    });
+
     const {id, name, base} = itemTerm.getProperties('id', 'name', 'base');
 
     this.set('nameFilter', {

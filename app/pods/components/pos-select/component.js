@@ -2,12 +2,15 @@ import Component from '@ember/component';
 import {computed, observer} from '@ember/object';
 import {later} from '@ember/runloop';
 import safeGet from 'pos/utils/safe-get';
+import {task, timeout} from 'ember-concurrency';
 
 const KEY_UP = 38;
 const KEY_DOWN = 40;
 const KEY_ENTER = 13;
 const ANY_OPTION_INDEX = -1;
 const DEFAULT_VISIBLE_OPTIONS_LIMIT = 25;
+const PROMPT_DEBOUNCE = 200;
+const RESULTS_COLLAPSE_DELAY = 150;
 
 export default Component.extend({
   label: '',
@@ -21,6 +24,8 @@ export default Component.extend({
   selectedIndex: ANY_OPTION_INDEX,
   prompt: '',
   isOpened: false,
+  regexPrompt: null,
+  filteredOptions: [],
 
   didReceiveAttrs() {
     const {value, options, valueKey, searchableKey} = this.getProperties('value', 'options', 'valueKey', 'searchableKey');
@@ -49,11 +54,7 @@ export default Component.extend({
   },
 
   promptBlur() {
-    const {onSelect, prompt} = this.getProperties('onSelect', 'prompt');
-    later(() => {
-      this.set('isOpened', false);
-      if (!prompt) onSelect(null);
-    }, 150);
+    this.get('closeResults').perform();
   },
 
   promptFocus() {
@@ -65,26 +66,36 @@ export default Component.extend({
     return this.get('onSelect')(option);
   },
 
+  closeResults: task(function *() {
+    const {onSelect, prompt} = this.getProperties('onSelect', 'prompt');
+    if (!prompt) onSelect(null);
+
+    yield timeout(RESULTS_COLLAPSE_DELAY);
+
+    this.set('isOpened', false);
+  }).drop(),
+
+  updateFilteredOptions: task(function *(prompt) {
+    yield timeout(PROMPT_DEBOUNCE);
+
+    const {options, searchableKey, visibleOptionsLimit} = this.getProperties('options', 'searchableKey', 'visibleOptionsLimit');
+
+    if (!prompt) return this.set('filteredOptions', options.length <= visibleOptionsLimit ? options : []);
+    const regexPrompt = new RegExp(prompt.replace(/[^\w ]/g).split(' ').map((word) => `(${word})`).join('.*'), 'i');
+
+    const filteredOptions = options.filter((option) => regexPrompt.test(safeGet(option, searchableKey).replace(/\(.+\)/g, '')));
+    this.setProperties({
+      regexPrompt,
+      filteredOptions: filteredOptions.length <= visibleOptionsLimit ? filteredOptions : []
+    });
+  }).restartable(),
+
+  promptObserver: observer('prompt', function() {
+    this.get('updateFilteredOptions').perform(this.get('prompt'));
+  }),
+
   filteredOptionsObserver: observer('filteredOptions', function() {
     if (this.get('filteredOptions').length) return this.set('selectedIndex', 0);
     this.set('selectedIndex', ANY_OPTION_INDEX);
-  }),
-
-  regexPrompt: computed('prompt', function() {
-    const {prompt} = this.getProperties('prompt');
-
-    if (!prompt) return null;
-
-    return new RegExp(prompt.replace(/\W/g, '').split('').map((char) => `(${char})`).join('.*'), 'i');
-  }),
-
-  filteredOptions: computed('regexPrompt', function() {
-    const {options, regexPrompt, searchableKey, visibleOptionsLimit} = this.getProperties('options', 'regexPrompt', 'searchableKey', 'visibleOptionsLimit');
-
-    if (regexPrompt === null) return options.length <= visibleOptionsLimit ? options : [];
-
-    const filteredOptions = options.filter((option) => regexPrompt.test(safeGet(option, searchableKey).replace(/\(.+\)/g, '')));
-
-    return filteredOptions.length <= visibleOptionsLimit ? filteredOptions : [];
   })
 });
