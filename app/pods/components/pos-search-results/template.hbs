@@ -1,18 +1,25 @@
-{{#unless initialLoad.isRunning}}
-  <ul class="search-results__items-wrapper">
-    {{#each items as |item|}}
-      <li class="search-results__item">
-        {{pos-search-results/item-details
-          item=item}}
-      </li>
-    {{/each}}
-  </ul>
-{{else}}
-  <div class="search-results__loading">
-    {{pos-icon icon='spinner'}}
-  </div>
-{{/unless}}
+<header class="search-results__header">
+  {{#unless initialLoad.isRunning}}
+    {{t 'search_results.total_results' showingCount=items.length totalCount=search.summary.total}}
+  {{/unless}}
+</header>
 
+<div class="search-results__items-wrapper">
+  {{#unless initialLoad.isRunning}}
+    <ul class="search-results__items-list">
+      {{#each items as |item|}}
+        <li class="search-results__item">
+          {{pos-search-results/item-details
+            item=item}}
+        </li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <div class="search-results__loading">
+      {{pos-icon icon='spinner'}}
+    </div>
+  {{/unless}}
 
-{{pos-lazy-loader
-  onLazyLoad=(action lazyLoad)}}
+  {{pos-lazy-loader
+    onLazyLoad=(action lazyLoad)}}
+</div>
