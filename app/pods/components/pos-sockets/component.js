@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import {computed} from '@ember/object';
-import {lte} from '@ember/object/computed';
+import {lte, equal} from '@ember/object/computed';
 
 const COLORS_MAP = {
   R: 'red',
@@ -10,7 +10,7 @@ const COLORS_MAP = {
 
 export default Component.extend({
   tagName: 'ul',
-  classNameBindings: ['isFourSockets:sockets--four'],
+  classNameBindings: ['socketsModifier'],
 
   sockets: [],
 
@@ -25,5 +25,11 @@ export default Component.extend({
     }));
   }),
 
-  isFourSockets: lte('displaySockets.length', 4)
+  socketsModifier: computed('displaySockets.length', function() {
+    const socketsCount = this.get('displaySockets.length');
+
+    if (socketsCount === 1) return 'sockets--one';
+    if (socketsCount <= 4) return 'sockets--four';
+    return null;
+  })
 });
