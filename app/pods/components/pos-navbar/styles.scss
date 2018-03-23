@@ -6,13 +6,20 @@
   background-color: lighten($background-light-color, 10%);
 }
 
-.navbar__logo {
+.navbar__home-wrapper {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.navbar__home-logo {
   height: 40px;
   width: auto;
 }
 
-.navbar__title {
+.navbar__home-title {
   padding-left: $padding;
   font-family: $font-family-accent;
   font-size: 1.5rem;
+  color: $white;
 }
