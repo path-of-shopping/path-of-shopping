@@ -23,7 +23,7 @@ export default Component.extend({
   },
 
   ensureEmptyMod() {
-    const hasEmptyMods = this.get('block.mods').isAny('mod', null);
+    const hasEmptyMods = this.get('block.mods').some((modItem) => !modItem.get('mod'));
 
     if (hasEmptyMods) return;
 

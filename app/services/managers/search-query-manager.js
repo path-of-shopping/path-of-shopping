@@ -258,11 +258,10 @@ export default Service.extend({
   _cleanEmptyMods(hash) {
     if (!hash.mod) return;
 
-    hash.mod.forEach((block) => {
-      block.mods = block.mods.filter(({mod}) => !!mod);
+    hash.mod = hash.mod.filter((modBlock) => {
+      if (!modBlock.mods) return false;
+      return modBlock.mods.filter(({mod}) => !!mod) > 0;
     });
-
-    hash.mod = hash.mod.filter(({mods}) => mods.length);
 
     if (hash.mod.length === 0) delete hash.mod;
   }
