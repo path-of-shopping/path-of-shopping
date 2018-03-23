@@ -2,7 +2,7 @@
   display: flex;
 }
 
-.page-search-result__sidebar {
+.page-search-results__sidebar {
   @include sidebar;
 
   position: relative;
@@ -19,6 +19,6 @@
   }
 }
 
-.page-search-result__container {
+.page-search-results__container {
   flex: 1 1 auto;
 }

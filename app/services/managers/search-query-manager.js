@@ -71,7 +71,7 @@ export default Service.extend({
 
   hydrateFilters(partialFilters = null) {
     return {
-      league: (partialFilters.league || this.get('staticDataFetcher.leagues')[0]),
+      league: getKeyPath(partialFilters, 'league', this.get('staticDataFetcher.leagues')[0]),
       name: {
         id: getKeyPath(partialFilters, 'name.id', DEFAULT_FILTERS.NAME.id),
         name: getKeyPath(partialFilters, 'name.name', DEFAULT_FILTERS.NAME.name),
@@ -214,7 +214,7 @@ export default Service.extend({
         account: getKeyPath(partialFilters, 'trade.account', DEFAULT_FILTERS.TRADE.account)
 
       },
-      mod: Ember.A(partialFilters.mod ? partialFilters.mod.map((rawModBlock) => this.initModFilterBlock(rawModBlock)) : [this.initModFilterBlock()])
+      mod: Ember.A((partialFilters && partialFilters.mod) ? partialFilters.mod.map((rawModBlock) => this.initModFilterBlock(rawModBlock)) : [this.initModFilterBlock()])
     };
   },
 

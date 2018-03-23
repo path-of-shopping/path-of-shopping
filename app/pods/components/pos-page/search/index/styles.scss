@@ -1,0 +1,8 @@
+.page-search-index__container {
+  @include theme-border-radius;
+
+  width: 750px;
+  margin: $padding auto;
+  padding: $padding;
+  background-color: $background-light-color;
+}
