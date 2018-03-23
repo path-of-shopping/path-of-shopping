@@ -99,6 +99,8 @@ export default {
   },
   "search_results": {
     "total_results": "Showing <strong>{{showingCount}}</strong> / <strong>{{totalCount}}</strong> result(s)",
+    "corrupted": "Corrupted",
+    "unidentified": "Unidentified",
     "copy": "Copy whisper",
     "copied": "Copied"
   }

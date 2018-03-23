@@ -7,7 +7,7 @@
 </div>
 
 <div class="search-results-item-details__card">
-  <div class="search-results-item-details__card-header search-results-item-details__card-header--{{item.data.rarity}}">
+  <div class="search-results-item-details__card-header search-results-item-details__card-header--{{item.data.rarity}} {{if item.data.isShaper 'search-results-item-details__card-header--shaper'}} {{if item.data.isElder 'search-results-item-details__card-header--elder'}}">
     {{#if item.data.name}}
       <h1 class="search-results-item-details__card-header-title">
         {{item.data.name}}
@@ -34,6 +34,18 @@
   </ul>
 
   <ul class="search-results-item-details__card-properties">
+    {{#if item.data.isCorrupted}}
+      <li class="search-results-item-details__card-property-corrupted">
+        {{t 'search_results.corrupted'}}
+      </li>
+    {{/if}}
+
+    {{#unless item.data.isIdentified}}
+      <li class="search-results-item-details__card-property-unidentified">
+        {{t 'search_results.unidentified'}}
+      </li>
+    {{/unless}}
+
     {{#each item.data.properties as |property|}}
       <li class="search-results-item-details__card-property">
         {{property.name}}

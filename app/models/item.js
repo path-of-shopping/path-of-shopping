@@ -17,6 +17,9 @@ export default EmberObject.extend({
     image: null,
     isIdentified: null,
     isVerified: null,
+    isElder: null,
+    isShaper: null,
+    isCorrupted: null,
     rarity: null,
 
     // Lists
