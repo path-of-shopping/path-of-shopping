@@ -82,8 +82,11 @@
 }
 
 .search-results-item-details__card-header-subtitle {
-  margin-left: 10px;
   padding-top: 3px;
+}
+
+.search-results-item-details__card-header-title + .search-results-item-details__card-header-subtitle {
+  margin-left: 10px;
 }
 
 .search-results-item-details__card-mods {

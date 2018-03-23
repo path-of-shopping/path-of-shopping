@@ -8,9 +8,12 @@
 
 <div class="search-results-item-details__card">
   <div class="search-results-item-details__card-header search-results-item-details__card-header--{{item.data.rarity}}">
-    <h1 class="search-results-item-details__card-header-title">
-      {{item.data.name}}
-    </h1>
+    {{#if item.data.name}}
+      <h1 class="search-results-item-details__card-header-title">
+        {{item.data.name}}
+      </h1>
+    {{/if}}
+
     <h2 class="search-results-item-details__card-header-subtitle">
       {{item.data.base}}
     </h2>
