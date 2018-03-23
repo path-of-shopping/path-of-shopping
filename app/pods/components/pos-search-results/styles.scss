@@ -1,19 +1,16 @@
+& {
+  background-color: $background-light-color;
+}
+
 .search-results__header {
   position: relative;
   padding: ($padding / 2) $padding ($padding / 2) ($padding * 2);
-  margin-bottom: $padding;
-  background-color: $background-light-color;
-
-  &::before {
-    content: $corner-background-light-image;
-    position: absolute;
-    left: 0;
-    bottom: -55px;
-  }
 }
 
 .search-results__items-wrapper {
-  padding: $padding;
+  padding: ($padding * 2) $padding;
+  background-color: $background-dark-color;
+  border-top-left-radius: 50px;
 }
 
 .search-results__items-list {
