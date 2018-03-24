@@ -1,4 +1,4 @@
-import Service from '@ember/service';
+import Service, {inject as service} from '@ember/service';
 import {Promise} from 'rsvp';
 import fetch from 'fetch';
 import ENV from 'pos/config/environment';
@@ -6,6 +6,8 @@ import ENV from 'pos/config/environment';
 const {APP: {API_URL}} = ENV;
 
 export default Service.extend({
+  router: service('router'),
+
   httpGet(endpoint) {
     return this._fetch('GET', endpoint);
   },
@@ -26,6 +28,7 @@ export default Service.extend({
 
     return new Promise((resolve, reject) => {
       fetch(`${API_URL}/${endpoint}`, params).then((response) => {
+        if (response.status >= 500) return this.get('router').transitionTo('maintenance');
         if (response.status >= 400) return response.json().then(reject);
         return response.json().then(resolve);
       });

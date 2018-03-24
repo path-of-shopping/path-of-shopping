@@ -10,6 +10,10 @@ Router.map(function() {
   this.route('search', {path: '/'}, function() {
     this.route('results', {path: '/search/:key'});
   });
+
+  this.route('maintenance');
+
+  this.route('not-found', {path: '*path'});
 });
 
 export default Router;

@@ -1,0 +1,19 @@
+& {
+  text-align: center;
+  padding: (2 * $padding) 0;
+}
+
+.page-error-maintenance__title {
+  font-family: $font-family-accent;
+  font-size: 2.5rem;
+}
+
+.page-error-maintenance__logo {
+  width: 200px;
+  margin-top: 2 * $padding;
+}
+
+.page-error-maintenance__description {
+  max-width: 800px;
+  margin: (2 * $padding) auto 0;
+}

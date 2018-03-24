@@ -13,6 +13,17 @@ export default {
   "select": {
     "any": "Any"
   },
+  "page": {
+    "error_maintenance": {
+      "title": "The service is temporary unavailable",
+      "description": "Ultimately, PoS relies on the official trading site and it looks like it is currently under maintenance. We will eventually build our own item index in order to be less dependant.<br><br>But hey, come back in a few minutes, it should be all good!"
+    },
+    "error_not_found": {
+      "title": "Oh noes !",
+      "description": "The page you're looking for does not exist.",
+      "back_button": "Return to home"
+    }
+  },
   "search_form": {
     "search_button": "Search",
     "league": {
