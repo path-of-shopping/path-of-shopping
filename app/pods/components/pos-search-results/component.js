@@ -17,10 +17,10 @@ export default Component.extend({
 
   didReceiveAttrs() {
     this._clear();
-    this.get('initialLoad').perform();
+    this.get('initialLoadTask').perform();
   },
 
-  initialLoad: task(function *() {
+  initialLoadTask: task(function *() {
     const {key, items, searchFetcher, itemsFetcher} = this.getProperties('key', 'items', 'searchFetcher', 'itemsFetcher');
 
     const search = yield searchFetcher.fetch(key);

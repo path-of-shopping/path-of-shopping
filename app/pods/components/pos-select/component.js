@@ -54,7 +54,7 @@ export default Component.extend({
   },
 
   promptBlur() {
-    this.get('closeResults').perform();
+    this.get('closeResultsTask').perform();
   },
 
   promptFocus() {
@@ -66,7 +66,7 @@ export default Component.extend({
     return this.get('onSelect')(option);
   },
 
-  closeResults: task(function *() {
+  closeResultsTask: task(function *() {
     const {onSelect, prompt} = this.getProperties('onSelect', 'prompt');
     if (!prompt) onSelect(null);
 
@@ -75,7 +75,7 @@ export default Component.extend({
     this.set('isOpened', false);
   }).drop(),
 
-  updateFilteredOptions: task(function *(prompt) {
+  updateFilteredOptionsTask: task(function *(prompt) {
     yield timeout(PROMPT_DEBOUNCE);
 
     const {options, searchableKey, visibleOptionsLimit} = this.getProperties('options', 'searchableKey', 'visibleOptionsLimit');
@@ -91,7 +91,7 @@ export default Component.extend({
   }).restartable(),
 
   promptObserver: observer('prompt', function() {
-    this.get('updateFilteredOptions').perform(this.get('prompt'));
+    this.get('updateFilteredOptionsTask').perform(this.get('prompt'));
   }),
 
   filteredOptionsObserver: observer('filteredOptions', function() {

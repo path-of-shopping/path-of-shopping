@@ -33,7 +33,7 @@ export default Component.extend({
     searchFetcher.fetch(key).then((search) => this.set('filters', searchQueryManager.hydrateFilters(search.get('query'))));
   },
 
-  searchSubmission: task(function *(sanitizedFilters) {
+  searchSubmissionTask: task(function *(sanitizedFilters) {
     this.get('analytics').track.searchCreation();
     const persistedSearch = yield this.get('searchPersister').persist(sanitizedFilters);
 
@@ -42,6 +42,6 @@ export default Component.extend({
 
   triggerSearch() {
     const sanitizedFilters = this.get('searchQueryManager').sanitize(this.get('filters'));
-    this.get('searchSubmission').perform(sanitizedFilters);
+    this.get('searchSubmissionTask').perform(sanitizedFilters);
   }
 });
