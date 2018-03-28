@@ -3,16 +3,9 @@ import InViewportMixin from 'ember-in-viewport';
 import {task} from 'ember-concurrency';
 
 export default Component.extend(InViewportMixin, {
-  onLazyLoad: () => {},
-
-  isLoading: false,
-  isFinish: false,
-
-  lazyLoad: task(function *() {
-    yield this.get('onLazyLoad')();
-  }).drop(),
+  lazyLoadableTask: null,
 
   didEnterViewport() {
-    this.get('lazyLoad').perform();
+    this.get('lazyLoadableTask').perform();
   }
 });

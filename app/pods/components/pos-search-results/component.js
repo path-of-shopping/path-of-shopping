@@ -32,7 +32,7 @@ export default Component.extend({
     window.scrollTo(0,0);
   }).drop(),
 
-  lazyLoad() {
+  lazyLoadTask: task(function *() {
     const {search, items, itemsFetcher, analytics, pageIndex} = this.getProperties('search', 'items', 'itemsFetcher', 'analytics', 'pageIndex');
     if (!search) return null;
 
@@ -42,11 +42,9 @@ export default Component.extend({
     analytics.track.searchLazyLoad(pageIndex);
     this.incrementProperty('pageIndex');
 
-    const itemsPromise = itemsFetcher.fetch(search.get('key'), nextItemIds);
-    itemsPromise.then((loadedItems) => items.addObjects(loadedItems));
-
-    return itemsPromise;
-  },
+    const newItems = yield itemsFetcher.fetch(search.get('key'), nextItemIds);
+    items.addObjects(newItems);
+  }).drop(),
 
   _clear() {
     this.set('search', null);
