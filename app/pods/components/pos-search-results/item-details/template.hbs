@@ -21,13 +21,13 @@
 
   <ul class="search-results-item-details__card-mods">
     {{#each item.data.implicitMods as |mod|}}
-      <li class="search-results-item-details__card-mod search-results-item-details__card-mod--implicit">
+      <li class="search-results-item-details__card-mod search-results-item-details__card-mod--implicit" style={{mod-style mod.value}}>
         {{mod.value}}
       </li>
     {{/each}}
 
     {{#each item.data.explicitMods as |mod|}}
-      <li class="search-results-item-details__card-mod search-results-item-details__card-mod--explicit">
+      <li class="search-results-item-details__card-mod search-results-item-details__card-mod--explicit" style={{mod-style mod.value}}>
         {{mod.value}}
       </li>
     {{/each}}
