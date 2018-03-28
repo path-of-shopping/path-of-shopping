@@ -4,6 +4,7 @@ import {computed} from '@ember/object';
 import {and} from '@ember/object/computed'
 
 export default Component.extend({
+  analytics: service('analytics'),
   staticDataFetcher: service('fetchers/static-data-fetcher'),
 
   item: null,
@@ -24,12 +25,16 @@ export default Component.extend({
   }),
 
   copyWhisperToClipboard() {
+    const analytics = this.get('analytics');
+
     this.toggleProperty('isCopied');
 
     try {
       this.$('input').select();
       document.execCommand('copy');
+      analytics.track.whisperToClipboardSuccess();
     } catch (_error) {
+      analytics.track.whisperToClipboardFailure();
       prompt('Copy whisper', this.get('item.trade.whisper'));
     }
   }

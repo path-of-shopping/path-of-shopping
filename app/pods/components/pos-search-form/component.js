@@ -3,6 +3,7 @@ import {inject as service} from '@ember/service';
 import {task} from 'ember-concurrency';
 
 export default Component.extend({
+  analytics: service('analytics'),
   searchQueryManager: service('managers/search-query-manager'),
   searchPersister: service('persisters/search-persister'),
   searchFetcher: service('fetchers/search-fetcher'),
@@ -28,11 +29,14 @@ export default Component.extend({
 
     if (!key) return this.set('filters', searchQueryManager.hydrateFilters());
 
+    this.get('analytics').track.searchReload();
     searchFetcher.fetch(key).then((search) => this.set('filters', searchQueryManager.hydrateFilters(search.get('query'))));
   },
 
   searchSubmission: task(function *(sanitizedFilters) {
+    this.get('analytics').track.searchCreation();
     const persistedSearch = yield this.get('searchPersister').persist(sanitizedFilters);
+
     this.get('onSearched')(persistedSearch);
   }).drop(),
 

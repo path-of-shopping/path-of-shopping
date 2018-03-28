@@ -4,6 +4,7 @@ import Ember from 'ember';
 import {task} from 'ember-concurrency';
 
 export default Component.extend({
+  analytics: service('analytics'),
   searchFetcher: service('fetchers/search-fetcher'),
   itemsFetcher: service('fetchers/items-fetcher'),
 
@@ -11,6 +12,8 @@ export default Component.extend({
 
   search: null,
   items: Ember.A([]),
+
+  pageIndex: 0,
 
   didReceiveAttrs() {
     this._clear();
@@ -30,11 +33,14 @@ export default Component.extend({
   }).drop(),
 
   lazyLoad() {
-    const {search, items, itemsFetcher} = this.getProperties('search', 'items', 'itemsFetcher');
+    const {search, items, itemsFetcher, analytics, pageIndex} = this.getProperties('search', 'items', 'itemsFetcher', 'analytics', 'pageIndex');
     if (!search) return null;
 
     const nextItemIds = search.getNextItemIds();
     if (nextItemIds.length === 0) return null;
+
+    analytics.track.searchLazyLoad(pageIndex);
+    this.incrementProperty('pageIndex');
 
     const itemsPromise = itemsFetcher.fetch(search.get('key'), nextItemIds);
     itemsPromise.then((loadedItems) => items.addObjects(loadedItems));

@@ -20,7 +20,8 @@ module.exports = function(environment) {
     },
 
     APP: {
-      API_URL: process.env.API_URL
+      API_URL: process.env.API_URL,
+      GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID
     },
 
     i18n: {
