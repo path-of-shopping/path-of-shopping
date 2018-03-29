@@ -1,0 +1,19 @@
+{{pos-navbar}}
+
+{{yield}}
+
+<footer class="application-wrapper__footer">
+  <div>
+    <p class="application-wrapper__footer-headline">
+      {{t 'application_wrapper.built_with'}}
+      {{pos-icon icon='heart'}}
+      {{t 'application_wrapper.by'}}
+      <a href={{organizationUrl}} target="_blank" class="application-wrapper__footer-link">
+        {{t 'application_wrapper.awesome_people'}}
+      </a>
+    </p>
+
+    <p>{{t 'application_wrapper.disclaimer_one'}}</p>
+    <p>{{t 'application_wrapper.disclaimer_two'}}</p>
+  </div>
+</footer>

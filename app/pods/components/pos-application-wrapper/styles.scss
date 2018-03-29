@@ -1,0 +1,27 @@
+& {
+  position: relative;
+  height: 100%;
+  padding-bottom: 105px + ($padding * 2);
+}
+
+.application-wrapper__footer {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  height: 105px;
+  width: 100%;
+  margin: (2 * $padding) auto 0;
+  text-align: center;
+  font-size: 0.8rem;
+  background-color: $background-light-color;
+}
+
+.application-wrapper__footer-headline {
+  margin-bottom: 0.5 * $padding;
+}
+
+.application-wrapper__footer-link {
+  @include link;
+}

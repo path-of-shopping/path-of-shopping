@@ -1,0 +1,9 @@
+@mixin link {
+  color: $white;
+  text-decoration: none;
+
+  &:hover,
+  &:active {
+    border-bottom: 1px dotted $white;
+  }
+}

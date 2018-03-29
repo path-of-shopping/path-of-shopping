@@ -114,5 +114,12 @@ export default {
     "unidentified": "Unidentified",
     "copy": "Copy whisper",
     "copied": "Copied"
+  },
+  "application_wrapper": {
+    "built_with": "Built with",
+    "by": "by",
+    "awesome_people": "awesome people",
+    "disclaimer_one": "This is a fan-site that is not affiliated with Grinding Gear Games in any way.",
+    "disclaimer_two": "It currently relies on the official trading site for the item index."
   }
 };
