@@ -34,5 +34,6 @@ export default [
   {id: 'leaguestone', label: 'Leaguestone'},
   {id: 'prophecy', label: 'Prophecy'},
   {id: 'card', label: 'Card'},
-  {id: 'currency', label: 'Currency'}
+  {id: 'currency', label: 'Currency'},
+  {id: 'monster', label: 'Captured Beast'}
 ];
