@@ -25,6 +25,7 @@ export default EmberObject.extend({
     // Lists
     implicitMods: null,
     explicitMods: null,
+    craftedMods: null,
     properties: null,
     requirements: null,
     sockets: null

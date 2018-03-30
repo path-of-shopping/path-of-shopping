@@ -31,6 +31,12 @@
         {{mod.value}}
       </li>
     {{/each}}
+
+    {{#each item.data.craftedMods as |mod|}}
+      <li class="search-results-item-details__card-mod search-results-item-details__card-mod--crafted" style={{mod-style mod.value}}>
+        {{mod.value}}
+      </li>
+    {{/each}}
   </ul>
 
   <ul class="search-results-item-details__card-properties">

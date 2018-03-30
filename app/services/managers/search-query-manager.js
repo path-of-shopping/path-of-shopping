@@ -260,7 +260,9 @@ export default Service.extend({
 
     hash.mod = hash.mod.filter((modBlock) => {
       if (!modBlock.mods) return false;
-      return modBlock.mods.filter(({mod}) => !!mod) > 0;
+
+      modBlock.mods = modBlock.mods.filter(({mod}) => !!mod);
+      return modBlock.mods.length;
     });
 
     if (hash.mod.length === 0) delete hash.mod;
