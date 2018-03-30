@@ -20,20 +20,46 @@
   </div>
 
   <ul class="search-results-item-details__card-mods">
+    {{#if item.data.implicitMods}}
+      <li class="search-results-item-details__card-mod-separator">
+        {{t 'search_results.implicit'}}
+      </li>
+    {{/if}}
     {{#each item.data.implicitMods as |mod|}}
-      <li class="search-results-item-details__card-mod search-results-item-details__card-mod--implicit" style={{mod-style mod.value}}>
+      <li class="search-results-item-details__card-mod" style={{mod-style mod.value}}>
         {{mod.value}}
       </li>
     {{/each}}
 
+    {{#if item.data.explicitMods}}
+      <li class="search-results-item-details__card-mod-separator">
+        {{t 'search_results.explicit'}}
+      </li>
+    {{/if}}
     {{#each item.data.explicitMods as |mod|}}
-      <li class="search-results-item-details__card-mod search-results-item-details__card-mod--explicit" style={{mod-style mod.value}}>
+      <li class="search-results-item-details__card-mod" style={{mod-style mod.value}}>
         {{mod.value}}
       </li>
     {{/each}}
 
+    {{#if item.data.craftedMods}}
+      <li class="search-results-item-details__card-mod-separator">
+        {{t 'search_results.crafted'}}
+      </li>
+    {{/if}}
     {{#each item.data.craftedMods as |mod|}}
-      <li class="search-results-item-details__card-mod search-results-item-details__card-mod--crafted" style={{mod-style mod.value}}>
+      <li class="search-results-item-details__card-mod" style={{mod-style mod.value}}>
+        {{mod.value}}
+      </li>
+    {{/each}}
+
+    {{#if item.data.pseudoMods}}
+      <li class="search-results-item-details__card-mod-separator">
+        {{t 'search_results.pseudo'}}
+      </li>
+    {{/if}}
+    {{#each item.data.pseudoMods as |mod|}}
+      <li class="search-results-item-details__card-mod search-results-item-details__card-mod--pseudo" style={{mod-style mod.value}}>
         {{mod.value}}
       </li>
     {{/each}}

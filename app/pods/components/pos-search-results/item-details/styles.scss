@@ -110,11 +110,37 @@
 }
 
 .search-results-item-details__card-mods {
-  flex: 1 1 40%
+  flex: 1 1 40%;
+  padding-right: $padding / 2;
+  font-size: 0.9rem;
 }
 
 .search-results-item-details__card-mod {
-  padding: $padding / 8;
+  padding-left: $padding / 2;
+}
+
+.search-results-item-details__card-mod--pseudo {
+  font-size: 0.8rem;
+}
+
+.search-results-item-details__card-mod-separator {
+  display: flex;
+  align-items: center;
+  font-family: $font-family-accent;
+  margin-top: $padding / 2;
+  letter-spacing: 1px;
+
+  &::after {
+    content: '';
+    background-color: $primary-color;
+    flex-grow: 1;
+    height: 1px;
+    margin-left: $padding / 2;
+  }
+
+  &:first-of-type {
+    margin-top: 0;
+  }
 }
 
 .search-results-item-details__card-properties {

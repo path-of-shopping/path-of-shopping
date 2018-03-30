@@ -113,7 +113,11 @@ export default {
     "corrupted": "Corrupted",
     "unidentified": "Unidentified",
     "copy": "Copy whisper",
-    "copied": "Copied"
+    "copied": "Copied",
+    "implicit": "Implicit",
+    "explicit": "Explicit",
+    "crafted": "Crafted",
+    "pseudo": "Pseudo"
   },
   "application_wrapper": {
     "built_with": "Built with",
