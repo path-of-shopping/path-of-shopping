@@ -26,6 +26,7 @@ export default {
   },
   "search_form": {
     "search_button": "Search",
+    "clear_button": "Clear",
     "league": {
       "league": "League"
     },

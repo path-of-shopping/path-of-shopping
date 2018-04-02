@@ -43,5 +43,9 @@ export default Component.extend({
   triggerSearch() {
     const sanitizedFilters = this.get('searchQueryManager').sanitize(this.get('filters'));
     this.get('searchSubmissionTask').perform(sanitizedFilters);
+  },
+
+  clearSearch() {
+    this.set('filters', this.get('searchQueryManager').hydrateFilters());
   }
 });
