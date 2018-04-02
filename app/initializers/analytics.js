@@ -4,6 +4,5 @@ export function initialize(app) {
 }
 
 export default {
-  name: 'analytics',
   initialize
 };

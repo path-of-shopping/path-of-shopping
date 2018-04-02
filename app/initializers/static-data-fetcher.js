@@ -7,6 +7,6 @@ export function initialize(app) {
 }
 
 export default {
-  name: 'static-data-fetcher',
+  before: 'global-loader',
   initialize
 };
