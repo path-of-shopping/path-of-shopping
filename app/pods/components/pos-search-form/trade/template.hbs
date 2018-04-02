@@ -17,20 +17,19 @@
 </div>
 
 <div class="search-form-trade__price">
-  {{#pos-select
-    class='search-form-trade__price-currency'
-    label=(t 'search_form.trade.price')
-    options=currencies
-    value=tradeFilter.price.currency
-    onSelect=(action currencySelect)
-    searchableKey='name'
-    valueKey='id'
-    as |option highlightedName|}}
-    <img class="search-form-trade__price-currency__icon" src="{{option.image}}" alt="{{option.id}}">
-    <div class="search-form-trade__price-currency__label">
-      {{highlightedName}}
-    </div>
-  {{/pos-select}}
+  <label class="search-form-trade__price-label">{{t 'search_form.trade.price'}}</label>
+
+  <div class="search-form-trade__price-currency">
+    {{#pos-power-select
+      options=currencies
+      selected=selectedCurrency
+      searchField='name'
+      onchange=(action currencySelect)
+    as |currency|}}
+      <img src="{{currency.image}}" alt="{{currency.id}}">
+      <div>{{currency.name}}</div>
+    {{/pos-power-select}}
+  </div>
 
   <div class="search-form-trade__price-min-max">
     {{input

@@ -39,13 +39,12 @@
   margin-left: 20px;
 }
 
-.search-form-trade__price-currency {
-  flex: 1 1 auto;
+.search-form-trade__price-label {
+  @include form-block-label;
 }
 
-.search-form-trade__price-currency__icon {
-  max-height: 30px;
-  margin-right: $padding / 4;
+.search-form-trade__price-currency {
+  flex: 1 1 auto;
 }
 
 .search-form-trade__price-min {

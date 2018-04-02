@@ -1,4 +1,6 @@
 @mixin theme-border-radius {
   border-bottom-left-radius: $border-radius;
+  border-bottom-right-radius: 0;
   border-top-right-radius: $border-radius;
+  border-top-light-radius: 0;
 }

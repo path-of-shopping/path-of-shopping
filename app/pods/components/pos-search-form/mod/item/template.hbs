@@ -1,18 +1,16 @@
-{{#pos-select
-  class='search-form-mod-item__select'
-  options=mods
-  visibleOptionsLimit=100
-  value=item.mod
-  onSelect=(action modSelect)
-  searchableKey='name'
-  valueKey='id'
-as |option highlightedName|}}
-  <span class="search-form-mod-item__select-item-type search-form-mod-item__select-item-type--{{option.type}}">
-    {{option.type}}
-  </span>
-
-  {{highlightedName}}
-{{/pos-select}}
+<div class="search-form-mod-item__select">
+  {{#pos-power-select
+    allowClear=false
+    selected=selectedMod
+    search=(perform searchModsTask)
+    onchange=(action modSelect)
+  as |mod|}}
+    <div class="search-form-mod-item__select-item-type search-form-mod-item__select-item-type--{{mod.type}}">
+      {{mod.type}}
+    </div>
+    <div>{{mod.name}}</div>
+  {{/pos-power-select}}
+</div>
 
 {{#if isWeightRequired}}
   {{input
@@ -31,9 +29,7 @@ as |option highlightedName|}}
   placeholder=(t 'search_form.mod.max')
   class='search-form-mod-item__max'}}
 
-{{#if canRemove}}
-  {{pos-icon
-    class='search-form-mod-item__remove'
-    icon='minus-circle'
-    onClick=(action remove)}}
-{{/if}}
+{{pos-icon
+  class='search-form-mod-item__remove'
+  icon='minus-circle'
+  onClick=(action remove)}}

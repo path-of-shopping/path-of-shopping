@@ -12,8 +12,15 @@ export default Component.extend({
   mapFilter: null,
 
   mapSeries: MAP_SERIES,
+  selectedMapSeries: null,
+
+  didReceiveAttrs() {
+    const selectedMapSeriesId = this.get('mapFilter.series');
+    this.set('selectedMapSeries', this.get('mapSeries').find((mapSeries) => mapSeries.id === selectedMapSeriesId));
+  },
 
   mapSeriesSelect(mapSeries) {
+    this.set('selectedMapSeries', mapSeries);
     this.set('mapFilter.series', mapSeries ? mapSeries.id : '');
   }
 });

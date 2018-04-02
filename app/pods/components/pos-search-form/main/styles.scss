@@ -15,6 +15,8 @@
 }
 
 .search-form-main__column {
+  display: flex;
+  align-items: center;
   flex: 1 1 auto;
   margin-left: $padding;
 
@@ -33,4 +35,19 @@
 
 .search-form-main__search {
   width: 100%;
+}
+
+.search-form-main__column-label {
+  @include form-block-label;
+
+
+  width: auto;
+}
+
+.search-form-main__column-select {
+  flex-grow: 1;
+}
+
+.search-form-main__column-select__base-label {
+  margin-left: $padding / 2;
 }

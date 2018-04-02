@@ -1,41 +1,57 @@
 <div class="search-form-main__row">
-  {{#pos-select
-    class='search-form-main__search'
-    label=(t 'search_form.main.search')
-    options=itemTerms
-    value=nameFilter.id
-    onSelect=(action itemTermSelect)
-    searchableKey='searchableName'
-    valueKey='id'
-    as |option highlightedName|}}
-    {{highlightedName}}
-  {{/pos-select}}
+  <div class="search-form-main__column">
+    <label class="search-form-main__column-label">
+      {{t 'search_form.main.search'}}
+    </label>
+
+    <div class="search-form-main__column-select">
+      {{#pos-power-select
+        selected=selectedItemTerm
+        search=(perform searchItemTermsTask)
+        onchange=(action itemTermSelect)
+      as |itemTerm|}}
+        {{#if itemTerm.name}}
+          {{itemTerm.name}} <em class="search-form-main__column-select__base-label">{{itemTerm.base}}</em>
+        {{else}}
+          {{itemTerm.base}}
+        {{/if}}
+      {{/pos-power-select}}
+    </div>
+  </div>
 </div>
 
 <div class="search-form-main__row">
   <div class="search-form-main__column search-form-main__column--category">
-    {{#pos-select
-      label=(t 'search_form.main.category')
-      options=itemCategories
-      value=typeFilter.category
-      onSelect=(action itemCategorySelect)
-      searchableKey='label'
-      valueKey='id'
-      as |option highlightedName|}}
-      {{highlightedName}}
-    {{/pos-select}}
+    <label class="search-form-main__column-label">
+      {{t 'search_form.main.category'}}
+    </label>
+
+    <div class="search-form-main__column-select">
+      {{#pos-power-select
+        options=itemCategories
+        selected=selectedItemCategory
+        searchField='label'
+        onchange=(action itemCategorySelect)
+      as |itemCategory|}}
+        {{itemCategory.label}}
+      {{/pos-power-select}}
+    </div>
   </div>
 
   <div class="search-form-main__column search-form-main__column--rarity">
-    {{#pos-select
-      label=(t 'search_form.main.rarity')
-      options=itemRarities
-      value=typeFilter.rarity
-      onSelect=(action itemRaritySelect)
-      searchableKey='label'
-      valueKey='id'
-      as |option highlightedName|}}
-      {{highlightedName}}
-    {{/pos-select}}
+    <label class="search-form-main__column-label">
+      {{t 'search_form.main.rarity'}}
+    </label>
+
+    <div class="search-form-main__column-select">
+      {{#pos-power-select
+        options=itemRarities
+        selected=selectedItemRarity
+        searchField='label'
+        onchange=(action itemRaritySelect)
+      as |itemRarity|}}
+        {{itemRarity.label}}
+      {{/pos-power-select}}
+    </div>
   </div>
 </div>

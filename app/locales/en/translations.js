@@ -125,5 +125,11 @@ export default {
     "awesome_people": "awesome people",
     "disclaimer_one": "This is a fan-site that is not affiliated with Grinding Gear Games in any way.",
     "disclaimer_two": "It currently relies on the official trading site for the item index."
+  },
+  "power_select": {
+    "loading": "Loading&hellip;",
+    "empty": "Nothing match the search.",
+    "prompt": "Type to search",
+    "any": "Any"
   }
 };

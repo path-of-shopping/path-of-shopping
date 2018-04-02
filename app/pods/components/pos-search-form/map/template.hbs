@@ -32,16 +32,20 @@
       value=mapFilter.shaped
       label=(t 'search_form.map.shaped')}}
   </div>
-  <div class="search-form-map__column">
-    {{#pos-select
-      label=(t 'search_form.map.series')
-      options=mapSeries
-      value=mapFilter.series
-      onSelect=(action mapSeriesSelect)
-      searchableKey='name'
-      valueKey='id'
-    as |option highlightedName|}}
-      {{highlightedName}}
-    {{/pos-select}}
+  <div class="search-form-map__column search-form-map__column--flex">
+    <label class="search-form-map__series-label">
+      {{t 'search_form.map.series'}}
+    </label>
+
+    <div class="search-form-map__series-label-select">
+      {{#pos-power-select
+        options=mapSeries
+        selected=selectedMapSeries
+        searchField='name'
+        onchange=(action mapSeriesSelect)
+      as |map|}}
+        {{map.name}}
+      {{/pos-power-select}}
+    </div>
   </div>
 </div>

@@ -19,7 +19,6 @@
 .search-form-mod-item__select-item-type {
   @include theme-border-radius;
 
-  margin-right: $padding / 2;
   padding: ($padding / 8) ($padding / 2);
   color: $white;
   font-size: 0.8rem;
@@ -52,7 +51,7 @@
 .search-form-mod-item__weight {
   @include form-block-input;
 
-  width: 13%;
+  width: 60px;
   margin-left: $padding / 2;
 }
 
@@ -60,7 +59,7 @@
 .search-form-mod-item__max {
   @include form-block-input;
 
-  width: 10%;
+  width: 40px;
 }
 
 .search-form-mod-item__min {
