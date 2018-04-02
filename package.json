@@ -13,7 +13,8 @@
   "scripts": {
     "build": "ember build",
     "start": "ember server",
-    "test": "ember test"
+    "test": "ember test",
+    "deploy": "nv .env.production ember build --environment=production && ./node_modules/.bin/gh-pages --dist dist --branch gh-pages"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free-webfonts": "^1.0.4",
@@ -42,6 +43,7 @@
     "ember-resolver": "^4.5.0",
     "ember-source": "2.18.0",
     "ember-truth-helpers": "^2.0.0",
+    "gh-pages": "^1.1.0",
     "loader.js": "^4.6.0",
     "simple-css-reset": "2.0.6"
   },
