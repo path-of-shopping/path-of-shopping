@@ -1,11 +1,11 @@
 <header class="search-results__header">
-  {{#unless initialLoad.isRunning}}
+  {{#unless initialLoadTask.isRunning}}
     {{t 'search_results.total_results' showingCount=items.length totalCount=search.summary.total}}
   {{/unless}}
 </header>
 
 <div class="search-results__items-wrapper">
-  {{#unless initialLoad.isRunning}}
+  {{#unless initialLoadTask.isRunning}}
     <ul class="search-results__items-list">
       {{#each items as |item|}}
         <li class="search-results__item">
